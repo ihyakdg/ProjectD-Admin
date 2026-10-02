@@ -379,7 +379,46 @@ export function checkStaffRole(data) {
   return { isStaff: false, roleName: 'Player', roleLevel: 0, badge: 'PLAYER' };
 }
 
-// Middleware: Require Staff Token
+const JWT_SECRET = process.env.JWT_SECRET || PROJECT_D_ADMIN_TOKEN || 'project-d-staff-secret-key-super-secure';
+
+function toBase64Url(str) {
+  return Buffer.from(str).toString('base64').replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+}
+
+function fromBase64Url(b64url) {
+  let b64 = b64url.replace(/-/g, '+').replace(/_/g, '/');
+  while (b64.length % 4) b64 += '=';
+  return Buffer.from(b64, 'base64').toString('utf-8');
+}
+
+function createStaffToken(payload) {
+  const data = JSON.stringify({
+    ...payload,
+    exp: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days
+  });
+  const encoded = toBase64Url(data);
+  const sig = crypto.createHmac('sha256', JWT_SECRET).update(encoded).digest('hex');
+  return `${encoded}.${sig}`;
+}
+
+function verifyStaffToken(tokenStr) {
+  if (!tokenStr || typeof tokenStr !== 'string') return null;
+  const parts = tokenStr.split('.');
+  if (parts.length !== 2) return null;
+  const [encoded, sig] = parts;
+  const expectedSig = crypto.createHmac('sha256', JWT_SECRET).update(encoded).digest('hex');
+  if (sig !== expectedSig) return null;
+  try {
+    const raw = fromBase64Url(encoded);
+    const payload = JSON.parse(raw);
+    if (!payload || Date.now() > payload.exp) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+// Middleware: Require Staff Token (Works seamlessly across serverless & stateful)
 function requireStaffAuth(req, res, next) {
   let token = req.headers['authorization'];
   if (token && token.startsWith('Bearer ')) {
@@ -389,7 +428,21 @@ function requireStaffAuth(req, res, next) {
     return res.status(401).json({ status: 'error', message: 'Sesi login tidak ditemukan. Silakan login kembali.' });
   }
 
-  const session = staffSessions.get(token);
+  let session = staffSessions.get(token);
+  if (!session) {
+    const verified = verifyStaffToken(token);
+    if (verified) {
+      session = {
+        growId: verified.growId,
+        roleName: verified.roleName,
+        roleLevel: verified.roleLevel,
+        badge: verified.badge,
+        expiresAt: verified.exp,
+      };
+      staffSessions.set(token, session);
+    }
+  }
+
   if (!session) {
     return res.status(401).json({ status: 'error', message: 'Sesi tidak valid atau telah kedaluwarsa.' });
   }
@@ -557,16 +610,19 @@ app.post('/api/auth/login', async (req, res) => {
       });
     }
 
-    // Issue Token
-    const token = crypto.randomBytes(32).toString('hex');
+    // Issue Stateless HMAC Token (works reliably across serverless instances)
     const realGrowId = playerData.tankIDName || cleanId;
-    const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days
-
-    staffSessions.set(token, {
+    const sessionObj = {
       growId: realGrowId,
       roleName: roleInfo.roleName,
       roleLevel: roleInfo.roleLevel,
       badge: roleInfo.badge,
+    };
+    const token = createStaffToken(sessionObj);
+    const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days
+
+    staffSessions.set(token, {
+      ...sessionObj,
       expiresAt,
     });
 
