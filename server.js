@@ -784,18 +784,26 @@ app.get('/api/stats', requireStaffAuth, (_req, res) => {
 
 // Fallback to index.html for SPA client-side routing
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  const indexPath = path.join(__dirname, 'public', 'index.html');
+  if (fs.existsSync(indexPath)) {
+    return res.sendFile(indexPath);
+  }
+  return res.status(200).send('<!DOCTYPE html><html><body><h1>Project-D Staff Item Editor</h1></body></html>');
 });
 
 // ============================================================================
-// Server Listener
+// Server Listener & Export
 // ============================================================================
-app.listen(PORT, () => {
-  console.log('================================================================');
-  console.log(`  Project-D Web Admin Panel (Item & Clothes/Block Editor)`);
-  console.log(`  Listening on http://localhost:${PORT}`);
-  console.log(`  Items Dictionary : ${ITEMS_DICT_PATH}`);
-  console.log(`  EditItem Database: ${EDIT_ITEM_PATH}`);
-  console.log(`  Players Database : ${PLAYERS_DIR}`);
-  console.log('================================================================');
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log('================================================================');
+    console.log(`  Project-D Web Admin Panel (Item & Clothes/Block Editor)`);
+    console.log(`  Listening on http://localhost:${PORT}`);
+    console.log(`  Items Dictionary : ${ITEMS_DICT_PATH}`);
+    console.log(`  EditItem Database: ${EDIT_ITEM_PATH}`);
+    console.log(`  Players Database : ${PLAYERS_DIR}`);
+    console.log('================================================================');
+  });
+}
+
+export default app;
