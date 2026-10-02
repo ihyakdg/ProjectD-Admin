@@ -1,5 +1,21 @@
 [
   {
+    "id": "e8bf5fd32b25f5a1",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1790957923622
+  },
+  {
+    "id": "2f4134e4f5252e63",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1790957149535
+  },
+  {
     "id": "67db377756a75f80",
     "growId": "SecretXz",
     "role": "Owner max",

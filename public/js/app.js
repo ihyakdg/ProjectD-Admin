@@ -190,6 +190,9 @@ async function loadStats() {
       document.getElementById('stat-custom-items').textContent = Number(s.totalCustomItems || 0).toLocaleString();
       document.getElementById('stat-gacha-blocks').textContent = Number(s.totalGachaBlocks || 0).toLocaleString();
       document.getElementById('stat-far-clothes').textContent = Number(s.clothesWithFarReach || 0).toLocaleString();
+      if (document.getElementById('logs-count-badge')) {
+        document.getElementById('logs-count-badge').textContent = s.totalLogsCount !== undefined ? s.totalLogsCount : (s.recentAuditLogs ? s.recentAuditLogs.length : 0);
+      }
     }
   } catch {}
 }
@@ -640,6 +643,163 @@ document.getElementById('btn-reset-item').addEventListener('click', async () => 
   }
 });
 
+// ============================================================================
+// ACTIVITY & AUDIT LOGS
+// ============================================================================
+let auditLogsList = [];
+
+function formatLogTimestamp(ts) {
+  if (!ts) return '-';
+  const d = new Date(ts);
+  return d.toLocaleString('id-ID', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  });
+}
+
+function timeAgo(ts) {
+  if (!ts) return '';
+  const diffSec = Math.floor((Date.now() - ts) / 1000);
+  if (diffSec < 60) return 'Baru saja';
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `${diffMin} mnt lalu`;
+  const diffHr = Math.floor(diffMin / 60);
+  if (diffHr < 24) return `${diffHr} jam lalu`;
+  const diffDays = Math.floor(diffHr / 24);
+  return `${diffDays} hari lalu`;
+}
+
+function getActionBadge(action) {
+  const act = String(action || '').toUpperCase();
+  if (act === 'SAVE_ITEM') {
+    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1"><i class="fa-solid fa-floppy-disk"></i> SAVE ITEM</span>';
+  }
+  if (act === 'SET_GACHA') {
+    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center gap-1"><i class="fa-solid fa-gift"></i> SET GACHA</span>';
+  }
+  if (act === 'RESET_ITEM') {
+    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30 flex items-center gap-1"><i class="fa-solid fa-arrow-rotate-left"></i> RESET ITEM</span>';
+  }
+  if (act === 'STAFF_LOGIN') {
+    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/30 flex items-center gap-1"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</span>';
+  }
+  return `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-700 text-slate-300 border border-slate-600">${act}</span>`;
+}
+
+function renderLogs(filterQuery = '') {
+  const container = document.getElementById('logs-container');
+  if (!container) return;
+
+  const query = String(filterQuery || '').trim().toLowerCase();
+  const filtered = auditLogsList.filter((log) => {
+    if (!query) return true;
+    const str = `${log.growId} ${log.role} ${log.action} ${log.details}`.toLowerCase();
+    return str.includes(query);
+  });
+
+  const totalEl = document.getElementById('modal-logs-total');
+  if (totalEl) totalEl.textContent = `${filtered.length} logs`;
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="py-16 text-center flex flex-col items-center justify-center gap-2 text-slate-400">
+        <i class="fa-regular fa-clipboard text-3xl text-slate-600"></i>
+        <p class="text-xs font-semibold text-slate-300">Belum ada riwayat aktivitas yang cocok.</p>
+        <p class="text-[11px] text-slate-500">Aktivitas staff seperti login, simpan item, dan reset akan tercatat otomatis di sini.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map((log) => {
+    const timeFormatted = formatLogTimestamp(log.timestamp);
+    const ago = timeAgo(log.timestamp);
+    const badgeHtml = getActionBadge(log.action);
+    const growId = log.growId || 'Unknown Staff';
+    const role = log.role || 'Staff';
+
+    return `
+      <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 flex flex-col gap-2 transition">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold font-mono">
+              ${growId.charAt(0).toUpperCase()}
+            </span>
+            <div>
+              <span class="text-xs font-bold text-white">${growId}</span>
+              <span class="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700/60 font-mono">${role}</span>
+            </div>
+            ${badgeHtml}
+          </div>
+          <div class="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
+            <span>${timeFormatted}</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 text-slate-500">${ago}</span>
+          </div>
+        </div>
+        <div class="text-xs text-slate-300 pl-9 font-sans leading-relaxed">
+          ${log.details || 'Tidak ada rincian keterangan.'}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+async function openLogsModal() {
+  const modal = document.getElementById('logs-modal');
+  if (!modal) return;
+  modal.classList.remove('hidden');
+  const container = document.getElementById('logs-container');
+  if (container) {
+    container.innerHTML = `
+      <div class="py-16 text-center flex flex-col items-center justify-center gap-2 text-slate-400">
+        <i class="fa-solid fa-circle-notch fa-spin text-2xl text-emerald-400"></i>
+        <p class="text-xs font-semibold">Memuat riwayat log dari server Project-D...</p>
+      </div>
+    `;
+  }
+
+  try {
+    const data = await apiRequest('/api/logs');
+    if (data.status === 'ok') {
+      auditLogsList = data.logs || [];
+      const searchVal = document.getElementById('log-search-input') ? document.getElementById('log-search-input').value : '';
+      renderLogs(searchVal);
+      if (document.getElementById('logs-count-badge')) {
+        document.getElementById('logs-count-badge').textContent = auditLogsList.length;
+      }
+    }
+  } catch (err) {
+    showToast(`Gagal memuat logs: ${err.message}`, 'error');
+  }
+}
+
+function closeLogsModal() {
+  const modal = document.getElementById('logs-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+if (document.getElementById('open-logs-btn')) {
+  document.getElementById('open-logs-btn').addEventListener('click', openLogsModal);
+}
+if (document.getElementById('btn-close-logs-modal')) {
+  document.getElementById('btn-close-logs-modal').addEventListener('click', closeLogsModal);
+}
+if (document.getElementById('btn-refresh-logs')) {
+  document.getElementById('btn-refresh-logs').addEventListener('click', async () => {
+    await openLogsModal();
+    showToast('Log aktivitas berhasil diperbarui!');
+  });
+}
+if (document.getElementById('log-search-input')) {
+  document.getElementById('log-search-input').addEventListener('input', (e) => {
+    renderLogs(e.target.value);
+  });
+}
+
 // Keyboard shortcut: '/' focuses search
 window.addEventListener('keydown', (e) => {
   if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
@@ -648,6 +808,7 @@ window.addEventListener('keydown', (e) => {
   }
   if (e.key === 'Escape') {
     closeEditModal();
+    closeLogsModal();
   }
 });
 

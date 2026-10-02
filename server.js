@@ -180,6 +180,22 @@ function addAuditLog(growId, role, action, details) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(AUDIT_LOG_PATH, JSON.stringify(auditLogs, null, 2), 'utf-8');
   } catch {}
+
+  // Forward to remote VPS so logs are never lost on Vercel serverless
+  const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
+  if (isVercel && REMOTE_GAME_SERVER) {
+    try {
+      doHttpRequest(`${REMOTE_GAME_SERVER}/api/audit-logs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Token': PROJECT_D_ADMIN_TOKEN,
+        },
+        body: entry,
+        timeout: 3000,
+      }).catch(() => {});
+    } catch {}
+  }
 }
 
 // Notify Project-D C++ Server via HTTP
@@ -822,12 +838,23 @@ app.post('/api/items/save', requireStaffAuth, async (req, res) => {
     // Save into in-memory map
     editItemMap.set(id, updated);
 
+    // Audit log description
+    const staffName = req.staff.growId;
+    const staffRole = req.staff.roleName;
+    const actionDesc = updated.property_gacha
+      ? `Set Block #${id} (${updated.Name}) menjadi GACHA dengan ${updated.Extra_Drops.length} hadiah drop`
+      : `Update item #${id} (${updated.Name}) [FarPunch: ${updated.Far_Punch}, FarPut: ${updated.Punch_Place}, Hit: ${updated.Punch_Hit}, xGems: ${updated.Gems}, xXP: ${updated.Xp}]`;
+
     let serverSync = false;
     const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
 
     if (isVercel) {
-      // Direct Remote Sync from Vercel to VPS Game Server
-      const syncRes = await syncRemoteItem('save', { item: updated });
+      // Direct Remote Sync from Vercel to VPS Game Server with staff info
+      const syncRes = await syncRemoteItem('save', {
+        item: updated,
+        staff: req.staff,
+        details: actionDesc,
+      });
       if (syncRes.ok) {
         serverSync = true;
       } else {
@@ -861,14 +888,7 @@ app.post('/api/items/save', requireStaffAuth, async (req, res) => {
       } catch {}
     }
 
-    // Audit log
-    const staffName = req.staff.growId;
-    const staffRole = req.staff.roleName;
-    const actionDesc = updated.property_gacha
-      ? `Set Block #${id} (${updated.Name}) menjadi GACHA dengan ${updated.Extra_Drops.length} hadiah drop`
-      : `Update item #${id} (${updated.Name}) [FarPunch: ${updated.Far_Punch}, FarPut: ${updated.Punch_Place}, Hit: ${updated.Punch_Hit}, xGems: ${updated.Gems}, xXP: ${updated.Xp}]`;
-
-    addAuditLog(staffName, staffRole, 'SAVE_ITEM', actionDesc);
+    addAuditLog(staffName, staffRole, updated.property_gacha ? 'SET_GACHA' : 'SAVE_ITEM', actionDesc);
 
     return res.json({
       status: 'ok',
@@ -895,11 +915,19 @@ app.post('/api/items/reset', requireStaffAuth, async (req, res) => {
     }
 
     editItemMap.delete(id);
+    const dictEntry = itemsDict[id];
+    const itemName = dictEntry ? dictEntry.name : `Item #${id}`;
+    const actionDesc = `Reset item #${id} (${itemName}) ke pengaturan bawaan server`;
+
     const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
 
     if (isVercel) {
       // Remote reset on VPS Game Server
-      await syncRemoteItem('reset', { id });
+      await syncRemoteItem('reset', {
+        id,
+        staff: req.staff,
+        details: actionDesc,
+      });
       try { saveEditItemv2(); } catch {}
     } else {
       saveEditItemv2();
@@ -909,10 +937,7 @@ app.post('/api/items/reset', requireStaffAuth, async (req, res) => {
       } catch {}
     }
 
-    const dictEntry = itemsDict[id];
-    const itemName = dictEntry ? dictEntry.name : `Item #${id}`;
-
-    addAuditLog(req.staff.growId, req.staff.roleName, 'RESET_ITEM', `Reset item #${id} (${itemName}) ke setelan bawaan`);
+    addAuditLog(req.staff.growId, req.staff.roleName, 'RESET_ITEM', actionDesc);
 
     return res.json({
       status: 'ok',
@@ -925,8 +950,32 @@ app.post('/api/items/reset', requireStaffAuth, async (req, res) => {
   }
 });
 
-// 9. Dashboard Statistics
-app.get('/api/stats', requireStaffAuth, (_req, res) => {
+// 9. Audit Logs List (Full history of who changed what)
+app.get('/api/logs', requireStaffAuth, async (_req, res) => {
+  try {
+    const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
+    if (isVercel) {
+      try {
+        const remoteRes = await doHttpRequest(`${REMOTE_GAME_SERVER}/api/audit-logs`, {
+          method: 'GET',
+          headers: { 'X-Admin-Token': PROJECT_D_ADMIN_TOKEN },
+          timeout: 4000,
+        });
+        if (remoteRes.ok && remoteRes.data && Array.isArray(remoteRes.data.logs)) {
+          return res.json({ status: 'ok', logs: remoteRes.data.logs, total: remoteRes.data.logs.length });
+        }
+      } catch {}
+    }
+
+    loadAuditLogs();
+    return res.json({ status: 'ok', logs: auditLogs, total: auditLogs.length });
+  } catch (err) {
+    return res.status(500).json({ status: 'error', message: 'Gagal memuat log aktivitas.' });
+  }
+});
+
+// 10. Dashboard Statistics
+app.get('/api/stats', requireStaffAuth, async (_req, res) => {
   let gachaCount = 0;
   let clothesWithFarReach = 0;
   let clothesWithXGems = 0;
@@ -939,6 +988,24 @@ app.get('/api/stats', requireStaffAuth, (_req, res) => {
     if ((it.Xp || 0) > 0) clothesWithXXp++;
   }
 
+  let logsToReturn = auditLogs;
+  const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
+  if (isVercel) {
+    try {
+      const remoteRes = await doHttpRequest(`${REMOTE_GAME_SERVER}/api/audit-logs`, {
+        method: 'GET',
+        headers: { 'X-Admin-Token': PROJECT_D_ADMIN_TOKEN },
+        timeout: 3000,
+      });
+      if (remoteRes.ok && remoteRes.data && Array.isArray(remoteRes.data.logs)) {
+        logsToReturn = remoteRes.data.logs;
+      }
+    } catch {}
+  } else {
+    loadAuditLogs();
+    logsToReturn = auditLogs;
+  }
+
   return res.json({
     status: 'ok',
     stats: {
@@ -949,7 +1016,8 @@ app.get('/api/stats', requireStaffAuth, (_req, res) => {
       clothesWithXGems,
       clothesWithXXp,
       activeStaffSessions: staffSessions.size,
-      recentAuditLogs: auditLogs.slice(0, 8),
+      totalLogsCount: logsToReturn.length,
+      recentAuditLogs: logsToReturn.slice(0, 10),
     },
   });
 });
