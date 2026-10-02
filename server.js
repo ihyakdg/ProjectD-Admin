@@ -366,33 +366,35 @@ function readPlayerData(growId) {
 }
 
 export function checkStaffRole(data) {
-  if (!data) return { isStaff: false, roleName: 'Player', roleLevel: 0 };
+  if (!data) return { isStaff: false, isConfig: false, roleName: 'Player', roleLevel: 0 };
 
   const customRole = String(data['Role.custom_role_name'] || '').trim();
+  const hasConfigAccess = Boolean(data['Role.has_config_access'] || data['Role.Owner_Server'] || data.role === 'Owner');
 
+  // Hierarchy: Config Access (999) -> Owner (555) -> Dev (444) -> Admin (333) -> Coder (300) -> Moderator (222) -> Staff (200)
+  if (data['Role.has_config_access']) {
+    return { isStaff: true, isConfig: true, roleName: customRole || 'Config Admin', roleLevel: 999, badge: '🔑 CONFIG' };
+  }
   if (data['Role.Owner_Server'] || data.role === 'Owner') {
-    return { isStaff: true, roleName: customRole || 'Owner', roleLevel: 555, badge: '👑 OWNER' };
+    return { isStaff: true, isConfig: true, roleName: customRole || 'Owner', roleLevel: 555, badge: '👑 OWNER' };
   }
   if (data['Role.Developer'] || data.role === 'Developer') {
-    return { isStaff: true, roleName: customRole || 'Developer', roleLevel: 444, badge: '⚙️ DEVELOPER' };
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Developer', roleLevel: 444, badge: '⚙️ DEVELOPER' };
   }
   if (data['Role.Administrator'] || data.role === 'Administrator' || data.role === 'Admin') {
-    return { isStaff: true, roleName: customRole || 'Administrator', roleLevel: 333, badge: '🛡️ ADMIN' };
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Administrator', roleLevel: 333, badge: '🛡️ ADMIN' };
   }
   if (data['Role.Coder']) {
-    return { isStaff: true, roleName: customRole || 'Coder', roleLevel: 300, badge: '💻 CODER' };
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Coder', roleLevel: 300, badge: '💻 CODER' };
   }
   if (data['Role.Moderator'] || data.role === 'Moderator') {
-    return { isStaff: true, roleName: customRole || 'Moderator', roleLevel: 222, badge: '⭐ MODERATOR' };
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Moderator', roleLevel: 222, badge: '⭐ MODERATOR' };
   }
   if (data['Role.Staff']) {
-    return { isStaff: true, roleName: customRole || 'Staff', roleLevel: 200, badge: '🎖️ STAFF' };
-  }
-  if (data['Role.has_config_access']) {
-    return { isStaff: true, roleName: customRole || 'Config Admin', roleLevel: 200, badge: '🔑 CONFIG' };
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Staff', roleLevel: 200, badge: '🎖️ STAFF' };
   }
 
-  return { isStaff: false, roleName: 'Player', roleLevel: 0, badge: 'PLAYER' };
+  return { isStaff: false, isConfig: false, roleName: 'Player', roleLevel: 0, badge: 'PLAYER' };
 }
 
 const JWT_SECRET = process.env.JWT_SECRET || PROJECT_D_ADMIN_TOKEN || 'project-d-staff-secret-key-super-secure';
@@ -453,6 +455,7 @@ function requireStaffAuth(req, res, next) {
         roleName: verified.roleName,
         roleLevel: verified.roleLevel,
         badge: verified.badge,
+        isConfig: Boolean(verified.isConfig),
         expiresAt: verified.exp,
       };
       staffSessions.set(token, session);
@@ -595,6 +598,7 @@ app.post('/api/auth/login', async (req, res) => {
             'Role.Administrator': Boolean(roles.isAdmin),
             'Role.Moderator': Boolean(roles.isMod),
             'Role.custom_role_name': roles.customRole || '',
+            'Role.has_config_access': Boolean(roles.isConfig || roles.isOwner),
             role: roles.isOwner ? 'Owner' : roles.isDev ? 'Developer' : roles.isAdmin ? 'Administrator' : roles.isMod ? 'Moderator' : roles.isStaff ? 'Staff' : 'Player',
           };
         }
@@ -633,6 +637,7 @@ app.post('/api/auth/login', async (req, res) => {
       roleName: roleInfo.roleName,
       roleLevel: roleInfo.roleLevel,
       badge: roleInfo.badge,
+      isConfig: Boolean(roleInfo.isConfig),
     };
     const token = createStaffToken(sessionObj);
     const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days
@@ -648,12 +653,7 @@ app.post('/api/auth/login', async (req, res) => {
       status: 'ok',
       message: `Selamat datang, ${realGrowId}!`,
       token,
-      staff: {
-        growId: realGrowId,
-        roleName: roleInfo.roleName,
-        roleLevel: roleInfo.roleLevel,
-        badge: roleInfo.badge,
-      },
+      staff: sessionObj,
     });
   } catch (err) {
     console.error('[AUTH ERROR]:', err);
@@ -670,6 +670,7 @@ app.get('/api/auth/me', requireStaffAuth, (req, res) => {
       roleName: req.staff.roleName,
       roleLevel: req.staff.roleLevel,
       badge: req.staff.badge,
+      isConfig: Boolean(req.staff.isConfig),
     },
   });
 });
@@ -951,8 +952,9 @@ app.post('/api/items/reset', requireStaffAuth, async (req, res) => {
 });
 
 // 9. Audit Logs List (Full history of who changed what)
-app.get('/api/logs', requireStaffAuth, async (_req, res) => {
+app.get('/api/logs', requireStaffAuth, async (req, res) => {
   try {
+    let allLogs = [];
     const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
     if (isVercel) {
       try {
@@ -962,13 +964,32 @@ app.get('/api/logs', requireStaffAuth, async (_req, res) => {
           timeout: 4000,
         });
         if (remoteRes.ok && remoteRes.data && Array.isArray(remoteRes.data.logs)) {
-          return res.json({ status: 'ok', logs: remoteRes.data.logs, total: remoteRes.data.logs.length });
+          allLogs = remoteRes.data.logs;
         }
       } catch {}
     }
 
-    loadAuditLogs();
-    return res.json({ status: 'ok', logs: auditLogs, total: auditLogs.length });
+    if (allLogs.length === 0) {
+      loadAuditLogs();
+      allLogs = auditLogs;
+    }
+
+    // Role Config can see ALL logs from all staff!
+    // Non-config staff can only see their own personal logs!
+    const isConfig = Boolean(req.staff.isConfig);
+    let filteredLogs = allLogs;
+    if (!isConfig) {
+      const myId = String(req.staff.growId || '').toLowerCase();
+      filteredLogs = allLogs.filter((l) => String(l.growId || '').toLowerCase() === myId);
+    }
+
+    return res.json({
+      status: 'ok',
+      logs: filteredLogs,
+      total: filteredLogs.length,
+      allLogsCount: allLogs.length,
+      isConfig,
+    });
   } catch (err) {
     return res.status(500).json({ status: 'error', message: 'Gagal memuat log aktivitas.' });
   }

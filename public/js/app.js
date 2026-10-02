@@ -690,6 +690,8 @@ function getActionBadge(action) {
   return `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-700 text-slate-300 border border-slate-600">${act}</span>`;
 }
 
+let isCurrentUserConfig = false;
+
 function renderLogs(filterQuery = '') {
   const container = document.getElementById('logs-container');
   if (!container) return;
@@ -702,10 +704,27 @@ function renderLogs(filterQuery = '') {
   });
 
   const totalEl = document.getElementById('modal-logs-total');
-  if (totalEl) totalEl.textContent = `${filtered.length} logs`;
+  if (totalEl) {
+    if (isCurrentUserConfig) {
+      totalEl.innerHTML = `<span class="text-amber-400 font-bold">🔑 Config View:</span> ${filtered.length} logs`;
+    } else {
+      totalEl.innerHTML = `<span class="text-blue-400 font-bold">🎖️ Personal View:</span> ${filtered.length} logs`;
+    }
+  }
+
+  let noticeHtml = '';
+  if (!isCurrentUserConfig) {
+    noticeHtml = `
+      <div class="p-3 mb-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-200 flex items-center gap-2">
+        <i class="fa-solid fa-circle-info text-blue-400 text-sm"></i>
+        <span><b>Mode Staff Biasa:</b> Anda hanya dapat melihat riwayat aktivitas akun Anda sendiri. Hak akses melihat seluruh log staf lain dipegang oleh Role Config.</span>
+      </div>
+    `;
+  }
 
   if (filtered.length === 0) {
     container.innerHTML = `
+      ${noticeHtml}
       <div class="py-16 text-center flex flex-col items-center justify-center gap-2 text-slate-400">
         <i class="fa-regular fa-clipboard text-3xl text-slate-600"></i>
         <p class="text-xs font-semibold text-slate-300">Belum ada riwayat aktivitas yang cocok.</p>
@@ -715,7 +734,7 @@ function renderLogs(filterQuery = '') {
     return;
   }
 
-  container.innerHTML = filtered.map((log) => {
+  container.innerHTML = noticeHtml + filtered.map((log) => {
     const timeFormatted = formatLogTimestamp(log.timestamp);
     const ago = timeAgo(log.timestamp);
     const badgeHtml = getActionBadge(log.action);
@@ -766,6 +785,7 @@ async function openLogsModal() {
     const data = await apiRequest('/api/logs');
     if (data.status === 'ok') {
       auditLogsList = data.logs || [];
+      isCurrentUserConfig = Boolean(data.isConfig);
       const searchVal = document.getElementById('log-search-input') ? document.getElementById('log-search-input').value : '';
       renderLogs(searchVal);
       if (document.getElementById('logs-count-badge')) {
