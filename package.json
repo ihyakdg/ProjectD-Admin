@@ -1,0 +1,31 @@
+{
+  "name": "projectd-admin",
+  "version": "1.0.0",
+  "description": "Project-D GTPS Web Admin Panel - Specialized Item & Clothes/Block Editor for Staff",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "gtps",
+    "growtopia",
+    "project-d",
+    "admin",
+    "item-editor",
+    "gacha"
+  ],
+  "author": "ihyakdg",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

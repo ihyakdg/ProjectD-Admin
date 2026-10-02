@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project-D | Staff Item & Clothes/Block Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            },
+            dark: {
+              900: '#090d16',
+              800: '#0f172a',
+              700: '#1e293b',
+              600: '#334155',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #080c14;
+      color: #f1f5f9;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#070b12] text-slate-100 antialiased custom-scrollbar">
+
+  <!-- ===================================================================== -->
+  <!-- TOAST NOTIFICATIONS                                                   -->
+  <!-- ===================================================================== -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- LOGIN MODAL / SCREEN (IF NOT AUTHENTICATED)                           -->
+  <!-- ===================================================================== -->
+  <div id="login-modal" class="fixed inset-0 z-40 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 transition-all">
+    <div class="glass-card w-full max-w-md p-8 rounded-2xl shadow-2xl relative border border-emerald-500/20 bg-gradient-to-b from-slate-900 to-slate-950">
+      <div class="text-center mb-6">
+        <div class="w-16 h-16 mx-auto mb-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-3xl shadow-lg shadow-emerald-500/10">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h1 class="text-2xl font-black tracking-tight text-white">Project-D Staff Portal</h1>
+        <p class="text-xs text-slate-400 mt-1">Web Editor Khusus Staff & Management Item</p>
+      </div>
+
+      <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 mb-6 flex gap-3 items-center">
+        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-lg"></i>
+        <p class="text-xs text-amber-200 leading-relaxed">
+          Portal ini hanya dapat diakses oleh akun dengan role <b>Staff, Moderator, Admin, atau Developer</b>.
+        </p>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">GrowID (Staff Account)</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400"><i class="fa-solid fa-user"></i></span>
+            <input type="text" id="login-growid" required placeholder="Contoh: SecretXz"
+              class="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Password</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400"><i class="fa-solid fa-lock"></i></span>
+            <input type="password" id="login-password" required placeholder="••••••••"
+              class="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+          </div>
+        </div>
+
+        <button type="submit" id="login-btn"
+          class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 active:scale-95 transition flex items-center justify-center gap-2">
+          <span>Masuk ke Staff Panel</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN STAFF APPLICATION                                                -->
+  <!-- ===================================================================== -->
+  <div id="app-wrapper" class="flex-1 flex flex-col hidden">
+    <!-- TOP NAVIGATION BAR -->
+    <header class="sticky top-0 z-30 glass-card border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-black text-xl shadow-md">
+            D
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-base tracking-tight text-white">Project-D</span>
+              <span class="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                Staff Item Editor
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400">Clothes & Blocks Configuration Engine</p>
+          </div>
+        </div>
+
+        <!-- Staff Profile & Logout -->
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex flex-col text-right">
+            <span id="staff-name-display" class="text-xs font-bold text-slate-200">Staff</span>
+            <span id="staff-role-display" class="text-[10px] text-emerald-400 font-mono">👑 OWNER</span>
+          </div>
+          <button id="logout-btn" title="Logout"
+            class="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/80 text-slate-300 hover:text-rose-400 hover:border-rose-500/40 flex items-center justify-center text-sm transition">
+            <i class="fa-solid fa-power-off"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+      <!-- QUICK STATS BAR -->
+      <section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-xl">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase font-semibold text-slate-400">Total Items</p>
+            <h3 id="stat-total-items" class="text-xl font-black text-white font-mono">31,074</h3>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase font-semibold text-slate-400">Custom Edited</p>
+            <h3 id="stat-custom-items" class="text-xl font-black text-emerald-400 font-mono">0</h3>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase font-semibold text-slate-400">Gacha Blocks</p>
+            <h3 id="stat-gacha-blocks" class="text-xl font-black text-purple-400 font-mono">0</h3>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-xl">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase font-semibold text-slate-400">Far Reach Clothes</p>
+            <h3 id="stat-far-clothes" class="text-xl font-black text-amber-400 font-mono">0</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH & FILTER TABS -->
+      <section class="glass-card rounded-2xl p-4 sm:p-5 space-y-4">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <!-- Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="filter-tabs">
+            <button data-cat="all" class="filter-tab px-3.5 py-2 rounded-xl text-xs font-bold transition bg-emerald-500 text-slate-950 shadow-md">
+              <i class="fa-solid fa-layer-group mr-1.5"></i> Semua Item
+            </button>
+            <button data-cat="clothes" class="filter-tab px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+              <i class="fa-solid fa-shirt mr-1.5 text-cyan-400"></i> Clothes / Buffs
+            </button>
+            <button data-cat="block" class="filter-tab px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+              <i class="fa-solid fa-cube mr-1.5 text-amber-400"></i> Blocks & Walls
+            </button>
+            <button data-cat="gacha" class="filter-tab px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+              <i class="fa-solid fa-gift mr-1.5 text-purple-400"></i> Gacha Blocks
+            </button>
+            <button data-cat="edited" class="filter-tab px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-800/80 text-slate-300 hover:bg-slate-700">
+              <i class="fa-solid fa-bolt mr-1.5 text-yellow-400"></i> Custom Modified
+            </button>
+          </div>
+
+          <!-- Search Input -->
+          <div class="w-full md:w-80 relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400 pointer-events-none">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <input type="text" id="item-search" placeholder="Cari ID (e.g. 9908) atau Nama..."
+              class="w-full bg-slate-900 border border-slate-700/80 rounded-xl py-2 pl-10 pr-4 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+          </div>
+        </div>
+      </section>
+
+      <!-- ITEMS GRID -->
+      <section>
+        <div id="items-loading" class="py-20 text-center flex flex-col items-center justify-center gap-3">
+          <i class="fa-solid fa-circle-notch fa-spin text-3xl text-emerald-400"></i>
+          <p class="text-xs text-slate-400">Memuat katalog item Project-D...</p>
+        </div>
+
+        <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 hidden"></div>
+
+        <div id="items-empty" class="py-20 text-center flex flex-col items-center justify-center gap-3 hidden">
+          <div class="w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-500 text-2xl">
+            <i class="fa-regular fa-folder-open"></i>
+          </div>
+          <p class="text-sm font-semibold text-slate-300">Tidak ada item yang cocok dengan pencarian.</p>
+          <p class="text-xs text-slate-500">Coba gunakan kata kunci ID atau nama lain.</p>
+        </div>
+      </section>
+
+      <!-- PAGINATION -->
+      <section id="pagination-wrapper" class="flex items-center justify-between py-4 glass-card px-4 rounded-xl hidden">
+        <button id="prev-page-btn" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold transition disabled:opacity-50 disabled:pointer-events-none flex items-center gap-1.5">
+          <i class="fa-solid fa-chevron-left"></i> Prev
+        </button>
+        <span id="page-info" class="text-xs text-slate-400 font-mono">Halaman 1 dari 1</span>
+        <button id="next-page-btn" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold transition disabled:opacity-50 disabled:pointer-events-none flex items-center gap-1.5">
+          Next <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- ITEM EDIT MODAL                                                       -->
+  <!-- ===================================================================== -->
+  <div id="edit-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 hidden">
+    <div class="glass-card w-full max-w-3xl max-h-[92vh] flex flex-col rounded-2xl shadow-2xl border border-slate-700/80 bg-slate-900 overflow-hidden">
+      
+      <!-- MODAL HEADER -->
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+        <div class="flex items-center gap-3">
+          <div id="modal-item-badge" class="px-2.5 py-1 rounded-lg text-xs font-black font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            ID: #0
+          </div>
+          <div>
+            <h2 id="modal-item-title" class="text-lg font-black text-white leading-tight">Nama Item</h2>
+            <p id="modal-item-subtitle" class="text-xs text-slate-400 font-mono">Base: Item Name</p>
+          </div>
+        </div>
+        <button id="close-modal-btn" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- MODAL TABS -->
+      <div class="flex border-b border-slate-800 bg-slate-950/40 px-5 gap-2 pt-2">
+        <button id="tab-btn-clothes" class="modal-tab-btn py-2.5 px-4 text-xs font-bold border-b-2 border-emerald-500 text-emerald-400">
+          <i class="fa-solid fa-shirt mr-1.5"></i> Atribut Clothes / Buffs
+        </button>
+        <button id="tab-btn-block" class="modal-tab-btn py-2.5 px-4 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200">
+          <i class="fa-solid fa-cube mr-1.5"></i> Atribut Block & Gacha
+        </button>
+        <button id="tab-btn-general" class="modal-tab-btn py-2.5 px-4 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200">
+          <i class="fa-solid fa-sliders mr-1.5"></i> Identitas & Flags
+        </button>
+      </div>
+
+      <!-- MODAL BODY -->
+      <div class="flex-1 overflow-y-auto p-5 space-y-5 custom-scrollbar">
+
+        <!-- TAB 1: CLOTHES / WEARABLE BUFFS -->
+        <div id="panel-clothes" class="space-y-4">
+          <div class="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-3 flex gap-3 items-center">
+            <i class="fa-solid fa-circle-info text-cyan-400 text-base"></i>
+            <p class="text-xs text-cyan-200 leading-relaxed">
+              Pengaturan ini memberikan buff saat item dipakai oleh pemain (Hand, Shirt, Pants, Back, Mask, dll).
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Far Put (Punch_Place) -->
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-arrows-to-dot text-emerald-400"></i> Far Put / Place Range
+                </label>
+                <span id="label-far-place" class="text-xs font-mono font-bold text-emerald-400">0 Blocks</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mb-3">Jarak jangkauan menaruh block dari kejauhan.</p>
+              <input type="range" id="input-far-place" min="0" max="20" step="1" value="0"
+                class="w-full accent-emerald-500 cursor-pointer">
+            </div>
+
+            <!-- Far Punch (Far_Punch) -->
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-hand-fist text-cyan-400"></i> Far Punch Range
+                </label>
+                <span id="label-far-punch" class="text-xs font-mono font-bold text-cyan-400">0 Blocks</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mb-3">Jarak jangkauan memukul / menghancurkan block.</p>
+              <input type="range" id="input-far-punch" min="0" max="20" step="1" value="0"
+                class="w-full accent-cyan-500 cursor-pointer">
+            </div>
+
+            <!-- Punch Hit (Punch_Hit) -->
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-hammer text-amber-400"></i> Break Strength (Punch Hit)
+                </label>
+                <span id="label-punch-hit" class="text-xs font-mono font-bold text-amber-400">0 Hits</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mb-3">Kekuatan pukulan (Isi 1 untuk instant break 1 hit).</p>
+              <input type="range" id="input-punch-hit" min="0" max="20" step="1" value="0"
+                class="w-full accent-amber-500 cursor-pointer">
+            </div>
+
+            <!-- xGems Multiplier (Gems) -->
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-gem text-teal-400"></i> xGems Multiplier
+                </label>
+                <span id="label-gems" class="text-xs font-mono font-bold text-teal-400">0x Gems</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mb-3">Pengali kelipatan gems yang didapat saat memukul.</p>
+              <input type="range" id="input-gems" min="0" max="100" step="1" value="0"
+                class="w-full accent-teal-500 cursor-pointer">
+            </div>
+
+            <!-- xEXP Multiplier (Xp) -->
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-bolt text-purple-400"></i> xEXP Multiplier
+                </label>
+                <span id="label-xp" class="text-xs font-mono font-bold text-purple-400">0x EXP</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mb-3">Pengali kelipatan exp level yang didapatkan.</p>
+              <input type="range" id="input-xp" min="0" max="50" step="1" value="0"
+                class="w-full accent-purple-500 cursor-pointer">
+            </div>
+
+            <!-- Punch Effect (Punch_Id) -->
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <label class="text-xs font-bold text-white flex items-center gap-1.5 mb-1">
+                <i class="fa-solid fa-sparkles text-rose-400"></i> Punch Effect Visual (Punch_Id)
+              </label>
+              <p class="text-[11px] text-slate-400 mb-2">Efek animasi visual saat memukul.</p>
+              <select id="select-punch-id"
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500">
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: BLOCK & GACHA PROPERTIES -->
+        <div id="panel-block" class="space-y-4 hidden">
+          <!-- GACHA TOGGLE CARD -->
+          <div class="bg-gradient-to-r from-purple-950/40 to-slate-950/60 p-4 rounded-xl border border-purple-500/30">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="text-sm font-black text-white flex items-center gap-2">
+                  <i class="fa-solid fa-gift text-purple-400"></i> Jadikan Block Ini Sebagai GACHA
+                </h4>
+                <p class="text-xs text-slate-300 mt-0.5">
+                  Ketika aktif, block ini akan menjadi Mystery Box / Gacha Box yang memberikan drop hadiah saat dipecahkan.
+                </p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="check-gacha" class="sr-only peer">
+                <div class="w-12 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+              </label>
+            </div>
+
+            <!-- GACHA DROPS CONFIGURATION TABLE -->
+            <div id="gacha-config-box" class="mt-4 pt-4 border-t border-purple-500/20 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-purple-300">Daftar Hadiah Drop Gacha (Extra Drops)</span>
+                <button type="button" id="btn-add-drop"
+                  class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 text-purple-300 border border-purple-500/40 text-xs font-bold flex items-center gap-1.5 transition">
+                  <i class="fa-solid fa-plus"></i> Tambah Hadiah
+                </button>
+              </div>
+
+              <!-- DROPS LIST -->
+              <div id="gacha-drops-list" class="space-y-2"></div>
+            </div>
+          </div>
+
+          <!-- BLOCK STRENGTH & DROP CHANCES -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <label class="text-xs font-bold text-white mb-1 block">Seed Drop Chance (%)</label>
+              <input type="number" id="input-seed-chance" min="0" max="100" placeholder="0 - 100%"
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono">
+            </div>
+
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <label class="text-xs font-bold text-white mb-1 block">Block Drop Chance (%)</label>
+              <input type="number" id="input-block-chance" min="-1" max="100" placeholder="-1 untuk auto"
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono">
+            </div>
+          </div>
+
+          <!-- BLOCK TOGGLE FLAGS -->
+          <div class="grid grid-cols-2 gap-3">
+            <label class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="check-farmable" class="accent-emerald-500 w-4 h-4 rounded">
+              <span class="text-xs font-semibold text-slate-200">Farmable Block</span>
+            </label>
+            <label class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="check-blocked" class="accent-rose-500 w-4 h-4 rounded">
+              <span class="text-xs font-semibold text-slate-200">Blocked Place (Dilarang Ditaruh)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- TAB 3: GENERAL INFO & FLAGS -->
+        <div id="panel-general" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Nama Kustom Item</label>
+            <input type="text" id="input-item-name" placeholder="Biarkan sama dengan aslinya jika tidak diganti"
+              class="w-full bg-slate-950 border border-slate-700 rounded-xl py-2 px-3 text-sm text-white focus:outline-none focus:border-emerald-500 font-mono">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Deskripsi Item</label>
+            <textarea id="input-item-desc" rows="3" placeholder="Deskripsi item..."
+              class="w-full bg-slate-950 border border-slate-700 rounded-xl py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500"></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Rarity (0 - 999)</label>
+              <input type="number" id="input-rarity" min="0" max="999"
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Harga Beli Toko / Price</label>
+              <input type="number" id="input-price" min="0"
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="check-untradeable" class="accent-amber-500 w-4 h-4 rounded">
+              <span class="text-xs font-semibold text-slate-200">Untradeable</span>
+            </label>
+            <label class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="check-blacklist" class="accent-rose-500 w-4 h-4 rounded">
+              <span class="text-xs font-semibold text-slate-200">Blacklist Drop</span>
+            </label>
+            <label class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="check-unobtainable" class="accent-purple-500 w-4 h-4 rounded">
+              <span class="text-xs font-semibold text-slate-200">Unobtainable</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MODAL FOOTER -->
+      <div class="p-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-950/60">
+        <button type="button" id="btn-reset-item"
+          class="px-4 py-2.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs font-bold transition flex items-center gap-2">
+          <i class="fa-solid fa-arrow-rotate-left"></i> Reset ke Bawaan
+        </button>
+
+        <div class="flex items-center gap-2">
+          <button type="button" id="btn-cancel-modal"
+            class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition">
+            Batal
+          </button>
+          <button type="button" id="btn-save-item"
+            class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-xs font-black shadow-lg shadow-emerald-500/20 active:scale-95 transition flex items-center gap-2">
+            <i class="fa-solid fa-floppy-disk"></i> Simpan & Terapkan Live
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

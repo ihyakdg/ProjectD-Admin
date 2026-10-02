@@ -1,0 +1,18 @@
+[
+  {
+    "id": "67db377756a75f80",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9908 (Mythical Infinity Rayman's Fist) [FarPunch: 10, FarPut: 10, Hit: 1, xGems: 20, xXP: 5]",
+    "timestamp": 1790955653390
+  },
+  {
+    "id": "2883b1be0c14816f",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1790955615635
+  }
+]
