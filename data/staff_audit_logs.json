@@ -1,5 +1,73 @@
 [
   {
+    "id": "73da200423df0b1a",
+    "growId": "SecretXzz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1790960134540
+  },
+  {
+    "id": "20794032d572d97e",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1790960134260
+  },
+  {
+    "id": "8346363b9e3d57ac",
+    "growId": "Xiruni",
+    "role": "Developer",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1790958906277
+  },
+  {
+    "id": "a0b5d4345e8c37ab",
+    "growId": "Xiruni",
+    "role": "Developer",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1790958878136
+  },
+  {
+    "id": "b8d75bbe3af2c539",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1790958865863
+  },
+  {
+    "id": "d7fd8d07fe664ee9",
+    "growId": "SFRMA",
+    "role": "Moderator",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1790958583765
+  },
+  {
+    "id": "793fdea4db0cab97",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1790958556981
+  },
+  {
+    "id": "22858bd82c3c2dac",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1790957952989
+  },
+  {
     "id": "e8bf5fd32b25f5a1",
     "growId": "SecretXz",
     "role": "Owner max",

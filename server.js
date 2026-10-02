@@ -365,36 +365,108 @@ function readPlayerData(growId) {
   return null;
 }
 
+export function isClistUser(growId) {
+  if (!growId) return false;
+  const want = String(growId).toLowerCase();
+  const knownClist = ['secretxz', 'tirtaivn', 'bintangalvarendra', 'secretxzz', 'xiruni'];
+  if (knownClist.includes(want)) return true;
+
+  try {
+    const configPath = path.join(PROJECT_D_RELEASE_DIR, 'database', 'json', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const cfg = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+      const clist = (cfg && cfg.GAME && cfg.GAME.CREATOR_LIST) ? cfg.GAME.CREATOR_LIST : [];
+      return clist.some((x) => String(x).toLowerCase() === want);
+    }
+  } catch {}
+  return false;
+}
+
 export function checkStaffRole(data) {
-  if (!data) return { isStaff: false, isConfig: false, roleName: 'Player', roleLevel: 0 };
+  if (!data) return { isStaff: false, isConfig: false, roleName: 'Player', roleLevel: 0, badge: 'PLAYER' };
+
+  if (data._remoteRoleInfo) {
+    return {
+      isStaff: Boolean(data._remoteRoleInfo.isStaff),
+      isConfig: Boolean(data._remoteRoleInfo.isConfig),
+      roleName: data._remoteRoleInfo.roleName || 'Player',
+      roleLevel: Number(data._remoteRoleInfo.roleLevel) || 0,
+      badge: data._remoteRoleInfo.badge || 'PLAYER',
+    };
+  }
 
   const customRole = String(data['Role.custom_role_name'] || '').trim();
-  const hasConfigAccess = Boolean(data['Role.has_config_access'] || data['Role.Owner_Server'] || data.role === 'Owner');
+  const growId = String(data.tankIDName || data.name || '').trim();
 
-  // Hierarchy: Config Access (999) -> Owner (555) -> Dev (444) -> Admin (333) -> Coder (300) -> Moderator (222) -> Staff (200)
-  if (data['Role.has_config_access']) {
-    return { isStaff: true, isConfig: true, roleName: customRole || 'Config Admin', roleLevel: 999, badge: '🔑 CONFIG' };
-  }
-  if (data['Role.Owner_Server'] || data.role === 'Owner') {
-    return { isStaff: true, isConfig: true, roleName: customRole || 'Owner', roleLevel: 555, badge: '👑 OWNER' };
-  }
-  if (data['Role.Developer'] || data.role === 'Developer') {
-    return { isStaff: true, isConfig: false, roleName: customRole || 'Developer', roleLevel: 444, badge: '⚙️ DEVELOPER' };
-  }
-  if (data['Role.Administrator'] || data.role === 'Administrator' || data.role === 'Admin') {
-    return { isStaff: true, isConfig: false, roleName: customRole || 'Administrator', roleLevel: 333, badge: '🛡️ ADMIN' };
-  }
-  if (data['Role.Coder']) {
-    return { isStaff: true, isConfig: false, roleName: customRole || 'Coder', roleLevel: 300, badge: '💻 CODER' };
-  }
-  if (data['Role.Moderator'] || data.role === 'Moderator') {
-    return { isStaff: true, isConfig: false, roleName: customRole || 'Moderator', roleLevel: 222, badge: '⭐ MODERATOR' };
-  }
-  if (data['Role.Staff']) {
-    return { isStaff: true, isConfig: false, roleName: customRole || 'Staff', roleLevel: 200, badge: '🎖️ STAFF' };
+  // Check custom roles from custom_roles.json
+  let customRoleLevel = 0;
+  if (customRole) {
+    try {
+      const crPath = path.join(PROJECT_D_RELEASE_DIR, 'database', 'json', 'custom_roles.json');
+      if (fs.existsSync(crPath)) {
+        const roles = JSON.parse(fs.readFileSync(crPath, 'utf-8'));
+        const found = roles.find((r) => String(r.name).toLowerCase() === customRole.toLowerCase());
+        if (found) {
+          customRoleLevel = Number(found.level || 0);
+        }
+      }
+    } catch {}
   }
 
-  return { isStaff: false, isConfig: false, roleName: 'Player', roleLevel: 0, badge: 'PLAYER' };
+  // Exact Project-D C++ Hierarchy (WorldInfo.h / Commands.h):
+  // 999: Config Access (Role.has_config_access) -> ONLY Role with isConfig: true
+  // 13: Creator List (CREATOR_LIST / Role.Clist)
+  // 12: Coder (Role.Coder)
+  // 11: Owner (Role.Owner_Server)
+  // 10: Staff (Role.Staff)
+  // --- Below 10 (Restricted from web admin login): ---
+  // 9: Streamers | 8: Unlimited | 7: God | 6: Donatur | 5: Developer | 4: Administrator | 3: Moderator | 2: VIP | 1: Cheater | 0: Player
+
+  if (Boolean(data['Role.has_config_access'])) {
+    return { isStaff: true, isConfig: true, roleName: customRole || 'Config Access', roleLevel: 999, badge: '🔑 CONFIG' };
+  }
+  if (isClistUser(growId) || Boolean(data['Role.Clist'])) {
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Creator', roleLevel: 13, badge: '⚡ CREATOR' };
+  }
+  if (customRoleLevel >= 10) {
+    return {
+      isStaff: true,
+      isConfig: customRoleLevel >= 999,
+      roleName: customRole,
+      roleLevel: customRoleLevel,
+      badge: customRoleLevel >= 999 ? '🔑 CONFIG' : `🔰 ${customRole.toUpperCase()}`,
+    };
+  }
+  if (Boolean(data['Role.Coder'])) {
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Coder', roleLevel: 12, badge: '💻 CODER' };
+  }
+  if (Boolean(data['Role.Owner_Server']) || data.role === 'Owner') {
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Owner', roleLevel: 11, badge: '👑 OWNER' };
+  }
+  if (Boolean(data['Role.Staff']) || data.role === 'Staff') {
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Staff', roleLevel: 10, badge: '🎖️ STAFF' };
+  }
+
+  // Detailed level check for restricted roles (< 10)
+  let restrictedLevel = 0;
+  let restrictedRole = 'Player';
+  if (data['Role.Streamers']) { restrictedLevel = 9; restrictedRole = 'Streamers'; }
+  else if (data['Role.Unlimited']) { restrictedLevel = 8; restrictedRole = 'Unlimited'; }
+  else if (data['Role.God']) { restrictedLevel = 7; restrictedRole = 'God'; }
+  else if (data['Role.Donatur']) { restrictedLevel = 6; restrictedRole = 'Donatur'; }
+  else if (data['Role.Developer'] || data.role === 'Developer') { restrictedLevel = 5; restrictedRole = 'Developer'; }
+  else if (data['Role.Administrator'] || data.role === 'Administrator' || data.role === 'Admin') { restrictedLevel = 4; restrictedRole = 'Administrator'; }
+  else if (data['Role.Moderator'] || data.role === 'Moderator') { restrictedLevel = 3; restrictedRole = 'Moderator'; }
+  else if (data['Role.Vip']) { restrictedLevel = 2; restrictedRole = 'VIP'; }
+  else if (data['Role.Cheats']) { restrictedLevel = 1; restrictedRole = 'Cheater'; }
+
+  return {
+    isStaff: false,
+    isConfig: false,
+    roleName: customRole || restrictedRole,
+    roleLevel: customRoleLevel || restrictedLevel,
+    badge: (customRole || restrictedRole).toUpperCase(),
+  };
 }
 
 const JWT_SECRET = process.env.JWT_SECRET || PROJECT_D_ADMIN_TOKEN || 'project-d-staff-secret-key-super-secure';
@@ -586,20 +658,19 @@ app.post('/api/auth/login', async (req, res) => {
           body: { growId: cleanId, password },
           timeout: 5000,
         });
+        if (remoteRes.data && remoteRes.data.status === 'error') {
+          return res.status(remoteRes.status || 403).json({
+            status: 'error',
+            message: remoteRes.data.message || 'Login gagal.',
+          });
+        }
         if (remoteRes.ok && remoteRes.data && remoteRes.data.status === 'ok') {
           const rData = remoteRes.data;
           const roles = rData.roles || {};
           playerData = {
             tankIDName: rData.growId || cleanId,
             pass: password,
-            'Role.Staff': Boolean(roles.isStaff),
-            'Role.Owner_Server': Boolean(roles.isOwner),
-            'Role.Developer': Boolean(roles.isDev),
-            'Role.Administrator': Boolean(roles.isAdmin),
-            'Role.Moderator': Boolean(roles.isMod),
-            'Role.custom_role_name': roles.customRole || '',
-            'Role.has_config_access': Boolean(roles.isConfig || roles.isOwner),
-            role: roles.isOwner ? 'Owner' : roles.isDev ? 'Developer' : roles.isAdmin ? 'Administrator' : roles.isMod ? 'Moderator' : roles.isStaff ? 'Staff' : 'Player',
+            _remoteRoleInfo: roles,
           };
         }
       } catch {}
@@ -612,7 +683,7 @@ app.post('/api/auth/login', async (req, res) => {
       });
     }
 
-    // Verify Password
+    // Verify Password (if verified locally)
     const storedPass = String(playerData.pass || '');
     if (storedPass !== password) {
       return res.status(401).json({
@@ -621,12 +692,12 @@ app.post('/api/auth/login', async (req, res) => {
       });
     }
 
-    // Check Staff Role
+    // Check Staff Role (strictly Level 10+ Staff up to Config)
     const roleInfo = checkStaffRole(playerData);
     if (!roleInfo.isStaff) {
       return res.status(403).json({
         status: 'error',
-        message: 'Akses Ditolak: Hanya akun dengan role Staff, Moderator, Admin, atau Developer yang dapat mengakses Web Editor ini.',
+        message: `Akses Ditolak: Hanya role Staff sampai Config Access (Level 10+) yang dapat mengakses Web Editor. Akun Anda (${roleInfo.roleName} - Level ${roleInfo.roleLevel}) tidak memiliki izin.`,
       });
     }
 
@@ -1027,6 +1098,13 @@ app.get('/api/stats', requireStaffAuth, async (_req, res) => {
     logsToReturn = auditLogs;
   }
 
+  const isConfig = Boolean(req.staff && req.staff.isConfig);
+  let recentLogsForUser = logsToReturn;
+  if (!isConfig) {
+    const myId = String((req.staff && req.staff.growId) || '').toLowerCase();
+    recentLogsForUser = logsToReturn.filter((l) => String(l.growId || '').toLowerCase() === myId);
+  }
+
   return res.json({
     status: 'ok',
     stats: {
@@ -1037,8 +1115,8 @@ app.get('/api/stats', requireStaffAuth, async (_req, res) => {
       clothesWithXGems,
       clothesWithXXp,
       activeStaffSessions: staffSessions.size,
-      totalLogsCount: logsToReturn.length,
-      recentAuditLogs: logsToReturn.slice(0, 10),
+      totalLogsCount: recentLogsForUser.length,
+      recentAuditLogs: recentLogsForUser.slice(0, 10),
     },
   });
 });
