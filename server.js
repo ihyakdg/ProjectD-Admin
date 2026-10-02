@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import http from 'http';
+import https from 'https';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -219,6 +220,104 @@ async function notifyCppServer(endpoint, payload) {
   });
 }
 
+// Universal HTTP/HTTPS Request Helper (compatible across Node 12 to 22)
+function doHttpRequest(targetUrl, options = {}) {
+  return new Promise((resolve) => {
+    try {
+      const u = new URL(targetUrl);
+      const isHttps = u.protocol === 'https:';
+      const lib = isHttps ? https : http;
+      const data = options.body
+        ? typeof options.body === 'string'
+          ? options.body
+          : JSON.stringify(options.body)
+        : null;
+
+      const reqOptions = {
+        hostname: u.hostname,
+        port: u.port || (isHttps ? 443 : 80),
+        path: u.pathname + (u.search || ''),
+        method: options.method || 'GET',
+        headers: {
+          ...(options.headers || {}),
+        },
+        timeout: options.timeout || 6000,
+      };
+
+      if (data) {
+        reqOptions.headers['Content-Type'] = reqOptions.headers['Content-Type'] || 'application/json';
+        reqOptions.headers['Content-Length'] = Buffer.byteLength(data);
+      }
+
+      const req = lib.request(reqOptions, (res) => {
+        let body = '';
+        res.on('data', (chunk) => (body += chunk));
+        res.on('end', () => {
+          let parsed = null;
+          try {
+            parsed = JSON.parse(body);
+          } catch {}
+          resolve({
+            ok: res.statusCode >= 200 && res.statusCode < 300,
+            status: res.statusCode,
+            body,
+            data: parsed,
+          });
+        });
+      });
+
+      req.on('error', (err) => resolve({ ok: false, status: 0, error: err.message }));
+      req.on('timeout', () => {
+        req.destroy();
+        resolve({ ok: false, status: 0, error: 'Request timeout' });
+      });
+
+      if (data) req.write(data);
+      req.end();
+    } catch (err) {
+      resolve({ ok: false, status: 0, error: err.message });
+    }
+  });
+}
+
+// Remote Sync Item to VPS Game Server
+async function syncRemoteItem(action, payload) {
+  const url = `${REMOTE_GAME_SERVER}/api/items/sync`;
+  console.log(`[REMOTE SYNC] Sending ${action} to ${url}...`);
+  const res = await doHttpRequest(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Admin-Token': PROJECT_D_ADMIN_TOKEN,
+    },
+    body: { action, ...payload },
+    timeout: 6000,
+  });
+  return res;
+}
+
+// Auto-refresh items cache from VPS when running on Vercel
+let lastRemoteSyncTime = 0;
+async function refreshRemoteEditItemsIfNeeded() {
+  const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
+  if (!isVercel) return;
+  if (Date.now() - lastRemoteSyncTime < 8000) return; // cache for 8 seconds
+  try {
+    const url = `${REMOTE_GAME_SERVER}/api/items/sync`;
+    const res = await doHttpRequest(url, { method: 'GET', timeout: 4000 });
+    if (res.ok && res.data && Array.isArray(res.data.items)) {
+      editItemMap.clear();
+      for (const item of res.data.items) {
+        if (item && item.ID !== undefined) {
+          editItemMap.set(Number(item.ID), item);
+        }
+      }
+      editItemsList = res.data.items;
+      lastRemoteSyncTime = Date.now();
+    }
+  } catch {}
+}
+
 // Initial load
 loadItemsDict();
 loadEditItemv2();
@@ -406,34 +505,29 @@ app.post('/api/auth/login', async (req, res) => {
     // If not found locally, attempt remote auth bridge
     if (!playerData && REMOTE_GAME_SERVER) {
       try {
-        const ctrl = new AbortController();
-        const timeout = setTimeout(() => ctrl.abort(), 4000);
-        const remoteRes = await fetch(`${REMOTE_GAME_SERVER}/api/player/auth`, {
+        const remoteRes = await doHttpRequest(`${REMOTE_GAME_SERVER}/api/player/auth`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'X-Admin-Token': PROJECT_D_ADMIN_TOKEN,
           },
-          body: JSON.stringify({ growId: cleanId, password }),
-          signal: ctrl.signal,
+          body: { growId: cleanId, password },
+          timeout: 5000,
         });
-        clearTimeout(timeout);
-        if (remoteRes.ok) {
-          const rData = await remoteRes.json();
-          if (rData && rData.status === 'ok') {
-            const roles = rData.roles || {};
-            playerData = {
-              tankIDName: rData.growId || cleanId,
-              pass: password,
-              'Role.Staff': Boolean(roles.isStaff),
-              'Role.Owner_Server': Boolean(roles.isOwner),
-              'Role.Developer': Boolean(roles.isDev),
-              'Role.Administrator': Boolean(roles.isAdmin),
-              'Role.Moderator': Boolean(roles.isMod),
-              'Role.custom_role_name': roles.customRole || '',
-              role: roles.isOwner ? 'Owner' : roles.isDev ? 'Developer' : roles.isAdmin ? 'Administrator' : roles.isMod ? 'Moderator' : roles.isStaff ? 'Staff' : 'Player',
-            };
-          }
+        if (remoteRes.ok && remoteRes.data && remoteRes.data.status === 'ok') {
+          const rData = remoteRes.data;
+          const roles = rData.roles || {};
+          playerData = {
+            tankIDName: rData.growId || cleanId,
+            pass: password,
+            'Role.Staff': Boolean(roles.isStaff),
+            'Role.Owner_Server': Boolean(roles.isOwner),
+            'Role.Developer': Boolean(roles.isDev),
+            'Role.Administrator': Boolean(roles.isAdmin),
+            'Role.Moderator': Boolean(roles.isMod),
+            'Role.custom_role_name': roles.customRole || '',
+            role: roles.isOwner ? 'Owner' : roles.isDev ? 'Developer' : roles.isAdmin ? 'Administrator' : roles.isMod ? 'Moderator' : roles.isStaff ? 'Staff' : 'Player',
+          };
         }
       } catch {}
     }
@@ -522,8 +616,9 @@ app.get('/api/items/punch-effects', requireStaffAuth, (_req, res) => {
 });
 
 // 5. Item Search & Filtering
-app.get('/api/items', requireStaffAuth, (req, res) => {
+app.get('/api/items', requireStaffAuth, async (req, res) => {
   try {
+    await refreshRemoteEditItemsIfNeeded();
     const search = String(req.query.search || '').trim().toLowerCase();
     const category = String(req.query.category || 'all').toLowerCase(); // all | clothes | block | gacha | edited
     const page = Math.max(1, parseInt(req.query.page) || 1);
@@ -602,7 +697,8 @@ app.get('/api/items', requireStaffAuth, (req, res) => {
 });
 
 // 6. Get Item Details
-app.get('/api/items/:id', requireStaffAuth, (req, res) => {
+app.get('/api/items/:id', requireStaffAuth, async (req, res) => {
+  await refreshRemoteEditItemsIfNeeded();
   const id = Number(req.params.id);
   if (isNaN(id) || id < 0) {
     return res.status(400).json({ status: 'error', message: 'Item ID tidak valid.' });
@@ -670,31 +766,44 @@ app.post('/api/items/save', requireStaffAuth, async (req, res) => {
     // Save into in-memory map
     editItemMap.set(id, updated);
 
-    // Save to disk atomically
-    const saved = saveEditItemv2();
-    if (!saved) {
-      return res.status(500).json({ status: 'error', message: 'Gagal menulis data ke database edit_itemv2.json.' });
-    }
-
-    // Notify Project-D C++ server for instant live in-game reload
     let serverSync = false;
-    try {
-      const cppPayload = {
-        id,
-        name: updated.Name,
-        description: updated.Desc,
-        rarity: updated.rarity,
-        breakHits: updated.Punch_Hit,
-        max_gems: updated.Gems,
-        xp: updated.Xp,
-        farmable: updated.property_farmable,
-        untradeable: updated.property_untradeable,
-        blocked_place: updated.property_blocked,
-        newdropchance: updated.Change_Drop_Seeds,
-      };
-      const syncRes = await notifyCppServer('/api/admin/items/save', cppPayload);
-      serverSync = syncRes.ok;
-    } catch {}
+    const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
+
+    if (isVercel) {
+      // Direct Remote Sync from Vercel to VPS Game Server
+      const syncRes = await syncRemoteItem('save', { item: updated });
+      if (syncRes.ok) {
+        serverSync = true;
+      } else {
+        console.warn('[VERCEL REMOTE SYNC WARNING]:', syncRes.error || syncRes.status);
+      }
+      try { saveEditItemv2(); } catch {}
+    } else {
+      // Save to disk locally on VPS
+      const saved = saveEditItemv2();
+      if (!saved) {
+        return res.status(500).json({ status: 'error', message: 'Gagal menulis data ke database edit_itemv2.json.' });
+      }
+
+      // Notify Project-D C++ server for instant live in-game reload
+      try {
+        const cppPayload = {
+          id,
+          name: updated.Name,
+          description: updated.Desc,
+          rarity: updated.rarity,
+          breakHits: updated.Punch_Hit,
+          max_gems: updated.Gems,
+          xp: updated.Xp,
+          farmable: updated.property_farmable,
+          untradeable: updated.property_untradeable,
+          blocked_place: updated.property_blocked,
+          newdropchance: updated.Change_Drop_Seeds,
+        };
+        const syncRes = await notifyCppServer('/api/admin/items/save', cppPayload);
+        serverSync = syncRes.ok;
+      } catch {}
+    }
 
     // Audit log
     const staffName = req.staff.growId;
@@ -730,12 +839,19 @@ app.post('/api/items/reset', requireStaffAuth, async (req, res) => {
     }
 
     editItemMap.delete(id);
-    saveEditItemv2();
+    const isVercel = Boolean(process.env.VERCEL) || !fs.existsSync('/root/downloads/Project-D');
 
-    // Notify Project-D C++ server
-    try {
-      await notifyCppServer('/api/admin/items/reset', { id });
-    } catch {}
+    if (isVercel) {
+      // Remote reset on VPS Game Server
+      await syncRemoteItem('reset', { id });
+      try { saveEditItemv2(); } catch {}
+    } else {
+      saveEditItemv2();
+      // Notify Project-D C++ server
+      try {
+        await notifyCppServer('/api/admin/items/reset', { id });
+      } catch {}
+    }
 
     const dictEntry = itemsDict[id];
     const itemName = dictEntry ? dictEntry.name : `Item #${id}`;
