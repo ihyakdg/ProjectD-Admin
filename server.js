@@ -421,7 +421,18 @@ app.post('/api/auth/login', async (req, res) => {
         if (remoteRes.ok) {
           const rData = await remoteRes.json();
           if (rData && rData.status === 'ok') {
-            playerData = rData.player || { tankIDName: cleanId, pass: password, 'Role.Staff': true };
+            const roles = rData.roles || {};
+            playerData = {
+              tankIDName: rData.growId || cleanId,
+              pass: password,
+              'Role.Staff': Boolean(roles.isStaff),
+              'Role.Owner_Server': Boolean(roles.isOwner),
+              'Role.Developer': Boolean(roles.isDev),
+              'Role.Administrator': Boolean(roles.isAdmin),
+              'Role.Moderator': Boolean(roles.isMod),
+              'Role.custom_role_name': roles.customRole || '',
+              role: roles.isOwner ? 'Owner' : roles.isDev ? 'Developer' : roles.isAdmin ? 'Administrator' : roles.isMod ? 'Moderator' : roles.isStaff ? 'Staff' : 'Player',
+            };
           }
         }
       } catch {}
