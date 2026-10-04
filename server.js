@@ -446,17 +446,23 @@ export function checkStaffRole(data) {
   if (Boolean(data['Role.Staff']) || data.role === 'Staff') {
     return { isStaff: true, isConfig: false, roleName: customRole || 'Staff', roleLevel: 10, badge: '🎖️ STAFF' };
   }
+  if (Boolean(data['Role.Developer']) || data.role === 'Developer') {
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Developer', roleLevel: 5, badge: '⚙️ DEVELOPER' };
+  }
+  if (Boolean(data['Role.Administrator']) || data.role === 'Administrator' || data.role === 'Admin') {
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Administrator', roleLevel: 4, badge: '🛡️ ADMIN' };
+  }
+  if (Boolean(data['Role.Moderator']) || data.role === 'Moderator') {
+    return { isStaff: true, isConfig: false, roleName: customRole || 'Moderator', roleLevel: 3, badge: '⭐ MODERATOR' };
+  }
 
-  // Detailed level check for restricted roles (< 10)
+  // Detailed level check for restricted roles (< 3)
   let restrictedLevel = 0;
   let restrictedRole = 'Player';
   if (data['Role.Streamers']) { restrictedLevel = 9; restrictedRole = 'Streamers'; }
   else if (data['Role.Unlimited']) { restrictedLevel = 8; restrictedRole = 'Unlimited'; }
   else if (data['Role.God']) { restrictedLevel = 7; restrictedRole = 'God'; }
   else if (data['Role.Donatur']) { restrictedLevel = 6; restrictedRole = 'Donatur'; }
-  else if (data['Role.Developer'] || data.role === 'Developer') { restrictedLevel = 5; restrictedRole = 'Developer'; }
-  else if (data['Role.Administrator'] || data.role === 'Administrator' || data.role === 'Admin') { restrictedLevel = 4; restrictedRole = 'Administrator'; }
-  else if (data['Role.Moderator'] || data.role === 'Moderator') { restrictedLevel = 3; restrictedRole = 'Moderator'; }
   else if (data['Role.Vip']) { restrictedLevel = 2; restrictedRole = 'VIP'; }
   else if (data['Role.Cheats']) { restrictedLevel = 1; restrictedRole = 'Cheater'; }
 
@@ -692,12 +698,12 @@ app.post('/api/auth/login', async (req, res) => {
       });
     }
 
-    // Check Staff Role (strictly Level 10+ Staff up to Config)
+    // Check Staff Role (Moderator, Admin, Developer, Staff, Owner, Config)
     const roleInfo = checkStaffRole(playerData);
     if (!roleInfo.isStaff) {
       return res.status(403).json({
         status: 'error',
-        message: `Akses Ditolak: Hanya role Staff sampai Config Access (Level 10+) yang dapat mengakses Web Editor. Akun Anda (${roleInfo.roleName} - Level ${roleInfo.roleLevel}) tidak memiliki izin.`,
+        message: `Akses Ditolak: Hanya role Moderator ke atas (Staff, Admin, Developer, Owner, Config) yang dapat mengakses Web Editor. Akun Anda (${roleInfo.roleName} - Level ${roleInfo.roleLevel}) tidak memiliki izin.`,
       });
     }
 
