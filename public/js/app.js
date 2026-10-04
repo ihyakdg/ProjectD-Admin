@@ -244,7 +244,14 @@ async function loadItems(page = 1) {
 // ============================================================================
 function cleanGrowtopiaColors(str) {
   if (!str) return '';
-  return str.replace(/`[0-9a-zA-Z!@#$%^&*()_+={}\[\]:;"'<>?,.\/\\|~`]/g, '');
+  return str
+    .replace(/<CR>/gi, ' ')
+    .replace(/\r\n|\r|\n/g, ' ')
+    .replace(/([a-zA-Z0-9])`[^\s`]([a-zA-Z0-9])/g, '$1 $2')
+    .replace(/`[^\s`]/g, '')
+    .replace(/`+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function renderItemsGrid(items) {
@@ -270,9 +277,10 @@ function renderItemsGrid(items) {
 
       // Stat Tags
       const tags = [];
+      if (item.breakHits > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Break: ${item.breakHits} Hits</span>`);
       if (item.farPunch > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Punch Reach: +${item.farPunch}</span>`);
       if (item.punchPlace > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Place Reach: +${item.punchPlace}</span>`);
-      if (item.punchHit > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Hits: ${item.punchHit}</span>`);
+      if (item.punchHit > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Punch Hit: ${item.punchHit}</span>`);
       if (item.gems > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">${item.gems}x Gems</span>`);
       if (item.xp > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">${item.xp}x EXP</span>`);
       if (item.extraDrops && item.extraDrops.length > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">${item.extraDrops.length} Drops</span>`);
@@ -294,10 +302,10 @@ function renderItemsGrid(items) {
             </div>
 
             <!-- Title & Original Name -->
-            <h3 class="text-sm font-black text-white group-hover:text-emerald-300 transition line-clamp-1" title="${cleanTitle}">
+            <h3 class="text-sm font-black text-white group-hover:text-emerald-300 transition line-clamp-1 break-words" title="${cleanTitle}">
               ${cleanTitle}
             </h3>
-            <p class="text-[11px] text-slate-500 font-mono line-clamp-1 mt-0.5">${item.baseName}</p>
+            <p class="text-[11px] text-slate-500 font-mono line-clamp-1 break-all mt-0.5">${item.baseName}</p>
 
             <!-- Stat tags preview -->
             <div class="flex flex-wrap gap-1.5 mt-3 min-h-[26px]">
@@ -396,6 +404,8 @@ function populateModalFields(item) {
   checkGacha.checked = Boolean(item.isGacha);
   document.getElementById('check-farmable').checked = Boolean(item.property_farmable);
   document.getElementById('check-blocked').checked = Boolean(item.property_blocked);
+  const breakHitsInput = document.getElementById('input-break-hits');
+  if (breakHitsInput) breakHitsInput.value = item.breakHits || 0;
   document.getElementById('input-seed-chance').value = item.changeDropSeeds || 0;
   document.getElementById('input-block-chance').value = item.blockChance !== undefined ? item.blockChance : -1;
 
@@ -478,6 +488,18 @@ function renderGachaDrops(drops, chances) {
     return;
   }
 
+  // Column header for clean alignment without clumping
+  const header = document.createElement('div');
+  header.className = 'flex items-center gap-2 px-3 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider select-none';
+  header.innerHTML = `
+    <div class="w-8 text-center">#</div>
+    <div class="flex-1">ID Hadiah (Item ID)</div>
+    <div class="w-24 text-center">Jumlah</div>
+    <div class="w-28 text-center">Peluang (%)</div>
+    <div class="w-8"></div>
+  `;
+  container.appendChild(header);
+
   drops.forEach((d, idx) => {
     const itemId = d[0] || 0;
     const count = d[1] || 1;
@@ -490,7 +512,7 @@ function renderGachaDrops(drops, chances) {
         ${idx + 1}
       </div>
       <div class="flex-1">
-        <input type="number" placeholder="Item ID" value="${itemId}" class="drop-item-id w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2.5 text-xs text-white font-mono focus:border-purple-500">
+        <input type="number" placeholder="Item ID (cth: 242)" value="${itemId}" class="drop-item-id w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2.5 text-xs text-white font-mono focus:border-purple-500">
       </div>
       <div class="w-24">
         <input type="number" min="1" max="200" placeholder="Count" value="${count}" class="drop-count w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2.5 text-xs text-white font-mono focus:border-purple-500" title="Jumlah Item">
@@ -510,7 +532,19 @@ function renderGachaDrops(drops, chances) {
 document.getElementById('btn-add-drop').addEventListener('click', () => {
   const container = document.getElementById('gacha-drops-list');
   const emptyNote = container.querySelector('div.text-center');
-  if (emptyNote) emptyNote.remove();
+  if (emptyNote) {
+    emptyNote.remove();
+    const header = document.createElement('div');
+    header.className = 'flex items-center gap-2 px-3 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider select-none';
+    header.innerHTML = `
+      <div class="w-8 text-center">#</div>
+      <div class="flex-1">ID Hadiah (Item ID)</div>
+      <div class="w-24 text-center">Jumlah</div>
+      <div class="w-28 text-center">Peluang (%)</div>
+      <div class="w-8"></div>
+    `;
+    container.appendChild(header);
+  }
 
   const count = container.querySelectorAll('.gacha-drop-row').length + 1;
   const row = document.createElement('div');
@@ -568,6 +602,7 @@ document.getElementById('btn-save-item').addEventListener('click', async () => {
       name: customName || currentEditingItem.baseName,
       desc: document.getElementById('input-item-desc').value.trim(),
       rarity: parseInt(document.getElementById('input-rarity').value) || 0,
+      breakHits: parseInt(document.getElementById('input-break-hits')?.value) || 0,
       itemPrice: parseInt(document.getElementById('input-price').value) || 0,
       farPunch: parseInt(document.getElementById('input-far-punch').value) || 0,
       punchPlace: parseInt(document.getElementById('input-far-place').value) || 0,

@@ -433,17 +433,26 @@
           </div>
 
           <!-- BLOCK STRENGTH & DROP CHANCES -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <label class="text-xs font-bold text-white mb-1 block">Ketahanan Balok (Break Hits)</label>
+              <input type="number" id="input-break-hits" min="0" max="250" placeholder="0 = bawaan items.dat"
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono">
+              <p class="text-[10px] text-slate-400 mt-1">Pukulan untuk hancur (cth: Dirt=3, Obsidian=50, 0=auto items.dat).</p>
+            </div>
+
             <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
               <label class="text-xs font-bold text-white mb-1 block">Seed Drop Chance (%)</label>
               <input type="number" id="input-seed-chance" min="0" max="100" placeholder="0 - 100%"
                 class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono">
+              <p class="text-[10px] text-slate-400 mt-1">Peluang balok menjatuhkan seed saat di-harvest.</p>
             </div>
 
             <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800">
               <label class="text-xs font-bold text-white mb-1 block">Block Drop Chance (%)</label>
               <input type="number" id="input-block-chance" min="-1" max="100" placeholder="-1 untuk auto"
                 class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono">
+              <p class="text-[10px] text-slate-400 mt-1">Peluang balok menjatuhkan block item (-1 = default).</p>
             </div>
           </div>
 
