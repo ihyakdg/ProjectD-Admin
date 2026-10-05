@@ -1,4 +1,4 @@
-// Project-D Staff Item & Clothes/Block Editor Client
+// Project-D Studio | Game Asset & Item Workbench Client
 let authToken = localStorage.getItem('projectd_staff_token') || '';
 let currentStaff = null;
 let currentItems = [];
@@ -8,9 +8,96 @@ let currentCategory = 'all';
 let currentSearch = '';
 let currentEditingItem = null;
 let punchEffects = [];
+const itemLookupCache = new Map();
 
 // ============================================================================
-// TOAST NOTIFICATION HELPER
+// GROWTOPIA COLOR PARSER & HELPERS
+// ============================================================================
+const GT_COLOR_CLASSES = {
+  '0': 'gt-c-0',
+  '1': 'gt-c-1',
+  '2': 'gt-c-2',
+  '3': 'gt-c-3',
+  '4': 'gt-c-4',
+  '5': 'gt-c-5',
+  '6': 'gt-c-6',
+  '7': 'gt-c-7',
+  '8': 'gt-c-8',
+  '9': 'gt-c-9',
+  'b': 'gt-c-b',
+  'p': 'gt-c-p',
+  'w': 'gt-c-w',
+  'o': 'gt-c-o',
+  'c': 'gt-c-c',
+};
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function cleanGrowtopiaColors(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/([a-zA-Z0-9])`[^\s`]([a-zA-Z0-9])/g, '$1 $2')
+    .replace(/`[^\s`]/g, '')
+    .replace(/`+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function renderGtColors(rawText) {
+  if (!rawText) return '';
+  const str = String(rawText);
+  let html = '';
+  let curClass = 'text-white';
+  let i = 0;
+
+  while (i < str.length) {
+    if (str[i] === '`' && i + 1 < str.length) {
+      const code = str[i + 1].toLowerCase();
+      if (GT_COLOR_CLASSES[code]) {
+        curClass = GT_COLOR_CLASSES[code];
+        i += 2;
+        continue;
+      }
+    }
+
+    let chunk = '';
+    while (i < str.length && str[i] !== '`') {
+      chunk += str[i];
+      i++;
+    }
+
+    if (chunk) {
+      html += `<span class="${curClass}">${escapeHtml(chunk)}</span>`;
+    }
+
+    if (i < str.length && str[i] === '`') {
+      if (i + 1 >= str.length || !GT_COLOR_CLASSES[str[i + 1].toLowerCase()]) {
+        html += `<span class="${curClass}">\`</span>`;
+        i++;
+      }
+    }
+  }
+
+  return html || escapeHtml(cleanGrowtopiaColors(str));
+}
+
+// Copy ID to clipboard with toast
+window.copyId = function (id) {
+  navigator.clipboard.writeText(String(id)).then(() => {
+    showToast(`Item ID #${id} disalin ke clipboard!`, 'info');
+  }).catch(() => {});
+};
+
+// ============================================================================
+// TOAST NOTIFICATIONS
 // ============================================================================
 function showToast(message, type = 'success') {
   const container = document.getElementById('toast-container');
@@ -18,23 +105,28 @@ function showToast(message, type = 'success') {
 
   const toast = document.createElement('div');
   const isErr = type === 'error';
+  const isInfo = type === 'info';
   const isWarn = type === 'warning';
-  
-  toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl shadow-2xl text-xs font-bold transition-all duration-300 transform translate-y-2 opacity-0 border ${
+
+  toast.className = `pointer-events-auto flex items-start gap-2.5 px-3.5 py-2.5 rounded-xl shadow-xl text-xs font-medium transition-all duration-200 transform translate-y-2 opacity-0 border ${
     isErr
-      ? 'bg-rose-950/90 text-rose-200 border-rose-500/40 shadow-rose-950/50'
+      ? 'bg-rose-950/90 text-rose-200 border-rose-500/40 shadow-rose-950/40'
       : isWarn
-      ? 'bg-amber-950/90 text-amber-200 border-amber-500/40 shadow-amber-950/50'
-      : 'bg-emerald-950/90 text-emerald-200 border-emerald-500/40 shadow-emerald-950/50'
+      ? 'bg-amber-950/90 text-amber-200 border-amber-500/40 shadow-amber-950/40'
+      : isInfo
+      ? 'bg-slate-900/95 text-slate-200 border-slate-700 shadow-black/50'
+      : 'bg-emerald-950/90 text-emerald-200 border-emerald-500/40 shadow-emerald-950/40'
   }`;
 
   const icon = isErr
-    ? '<i class="fa-solid fa-circle-exclamation text-rose-400 text-sm"></i>'
+    ? '<i class="fa-solid fa-circle-exclamation text-rose-400 mt-0.5 text-sm shrink-0"></i>'
     : isWarn
-    ? '<i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm"></i>'
-    : '<i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>';
+    ? '<i class="fa-solid fa-triangle-exclamation text-amber-400 mt-0.5 text-sm shrink-0"></i>'
+    : isInfo
+    ? '<i class="fa-solid fa-circle-info text-sky-400 mt-0.5 text-sm shrink-0"></i>'
+    : '<i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-sm shrink-0"></i>';
 
-  toast.innerHTML = `${icon}<span>${message}</span>`;
+  toast.innerHTML = `${icon}<span class="leading-relaxed">${message}</span>`;
   container.appendChild(toast);
 
   requestAnimationFrame(() => {
@@ -43,12 +135,12 @@ function showToast(message, type = 'success') {
 
   setTimeout(() => {
     toast.classList.add('opacity-0', 'translate-y-2');
-    setTimeout(() => toast.remove(), 300);
-  }, 4000);
+    setTimeout(() => toast.remove(), 250);
+  }, 3500);
 }
 
 // ============================================================================
-// API REQUEST HELPER
+// API CLIENT
 // ============================================================================
 async function apiRequest(endpoint, options = {}) {
   const headers = {
@@ -66,7 +158,7 @@ async function apiRequest(endpoint, options = {}) {
       if (res.status === 401) {
         logout();
       }
-      throw new Error(data.message || `Request failed with status ${res.status}`);
+      throw new Error(data.message || `Request gagal (${res.status})`);
     }
     return data;
   } catch (err) {
@@ -123,7 +215,6 @@ function logout() {
   showLoginModal();
 }
 
-// Handle Login Form Submit
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const growId = document.getElementById('login-growid').value.trim();
@@ -145,7 +236,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
       authToken = data.token;
       localStorage.setItem('projectd_staff_token', authToken);
       currentStaff = data.staff;
-      showToast(`Selamat datang kembali, ${data.staff.growId}!`);
+      showToast(`Selamat datang, ${data.staff.growId}!`);
       onAuthSuccess();
     } else {
       throw new Error(data.message || 'Login gagal.');
@@ -154,28 +245,27 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     showToast(err.message, 'error');
   } finally {
     btn.disabled = false;
-    btn.innerHTML = '<span>Masuk ke Staff Panel</span><i class="fa-solid fa-arrow-right"></i>';
+    btn.innerHTML = '<span>Otentikasi & Buka Studio</span><i class="fa-solid fa-arrow-right text-xs"></i>';
   }
 });
 
 document.getElementById('logout-btn').addEventListener('click', () => {
-  if (confirm('Apakah Anda yakin ingin logout dari Staff Panel?')) {
+  if (confirm('Apakah Anda ingin keluar dari Studio?')) {
     logout();
-    showToast('Berhasil logout.');
   }
 });
 
 // ============================================================================
-// DATA LOADERS
+// PUNCH EFFECTS & DASHBOARD STATS
 // ============================================================================
 async function loadPunchEffects() {
   try {
-    const data = await apiRequest('/api/items/punch-effects');
-    if (data.status === 'ok') {
-      punchEffects = data.effects || [];
+    const data = await apiRequest('/api/effects/punch');
+    if (data.status === 'ok' && Array.isArray(data.effects)) {
+      punchEffects = data.effects;
       const select = document.getElementById('select-punch-id');
       select.innerHTML = punchEffects
-        .map((p) => `<option value="${p.id}">${p.id} - ${p.name}</option>`)
+        .map((ef) => `<option value="${ef.id}">#${ef.id} - ${ef.name}</option>`)
         .join('');
     }
   } catch {}
@@ -186,27 +276,30 @@ async function loadStats() {
     const data = await apiRequest('/api/stats');
     if (data.status === 'ok' && data.stats) {
       const s = data.stats;
-      document.getElementById('stat-total-items').textContent = Number(s.totalDictItems || 31074).toLocaleString();
-      document.getElementById('stat-custom-items').textContent = Number(s.totalCustomItems || 0).toLocaleString();
-      document.getElementById('stat-gacha-blocks').textContent = Number(s.totalGachaBlocks || 0).toLocaleString();
-      document.getElementById('stat-far-clothes').textContent = Number(s.clothesWithFarReach || 0).toLocaleString();
+      document.getElementById('stat-total-items').textContent = (s.totalDictItems || 31074).toLocaleString('en-US');
+      document.getElementById('stat-custom-items').textContent = (s.totalCustomItems || 0).toLocaleString('en-US');
+      document.getElementById('stat-gacha-blocks').textContent = (s.totalGachaBlocks || 0).toLocaleString('en-US');
+      document.getElementById('stat-far-clothes').textContent = (s.clothesWithFarReach || 0).toLocaleString('en-US');
       if (document.getElementById('logs-count-badge')) {
-        document.getElementById('logs-count-badge').textContent = s.totalLogsCount !== undefined ? s.totalLogsCount : (s.recentAuditLogs ? s.recentAuditLogs.length : 0);
+        document.getElementById('logs-count-badge').textContent = s.totalLogsCount || 0;
       }
     }
   } catch {}
 }
 
+// ============================================================================
+// CATALOG DATA FETCHING & RENDERING
+// ============================================================================
 async function loadItems(page = 1) {
-  const loading = document.getElementById('items-loading');
-  const grid = document.getElementById('items-grid');
-  const empty = document.getElementById('items-empty');
-  const pagination = document.getElementById('pagination-wrapper');
+  currentPage = page;
+  const loadingEl = document.getElementById('items-loading');
+  const gridEl = document.getElementById('items-grid');
+  const emptyEl = document.getElementById('items-empty');
+  const paginationWrapper = document.getElementById('pagination-wrapper');
 
-  loading.classList.remove('hidden');
-  grid.classList.add('hidden');
-  empty.classList.add('hidden');
-  pagination.classList.add('hidden');
+  loadingEl.classList.remove('hidden');
+  gridEl.classList.add('hidden');
+  emptyEl.classList.add('hidden');
 
   try {
     const params = new URLSearchParams({
@@ -214,44 +307,32 @@ async function loadItems(page = 1) {
       limit: '30',
       category: currentCategory,
     });
-    if (currentSearch) params.append('search', currentSearch);
+    if (currentSearch) {
+      params.append('search', currentSearch);
+    }
 
     const data = await apiRequest(`/api/items?${params.toString()}`);
+    loadingEl.classList.add('hidden');
 
-    loading.classList.add('hidden');
+    if (data.status === 'ok') {
+      currentItems = data.items || [];
+      currentPage = data.page || 1;
+      currentTotalPages = data.totalPages || 1;
 
-    if (data.status === 'ok' && data.items && data.items.length > 0) {
-      currentItems = data.items;
-      currentPage = data.page;
-      currentTotalPages = data.totalPages;
-
-      renderItemsGrid(currentItems);
-      updatePagination(data.page, data.totalPages);
-      grid.classList.remove('hidden');
-      pagination.classList.remove('hidden');
-    } else {
-      empty.classList.remove('hidden');
+      if (currentItems.length === 0) {
+        emptyEl.classList.remove('hidden');
+        paginationWrapper.classList.add('hidden');
+      } else {
+        renderItemsGrid(currentItems);
+        gridEl.classList.remove('hidden');
+        paginationWrapper.classList.remove('hidden');
+        updatePagination(currentPage, currentTotalPages);
+      }
     }
   } catch (err) {
-    loading.classList.add('hidden');
-    empty.classList.remove('hidden');
-    showToast(`Gagal memuat item: ${err.message}`, 'error');
+    loadingEl.classList.add('hidden');
+    showToast(`Gagal memuat katalog: ${err.message}`, 'error');
   }
-}
-
-// ============================================================================
-// RENDER ITEMS GRID
-// ============================================================================
-function cleanGrowtopiaColors(str) {
-  if (!str) return '';
-  return str
-    .replace(/<CR>/gi, ' ')
-    .replace(/\r\n|\r|\n/g, ' ')
-    .replace(/([a-zA-Z0-9])`[^\s`]([a-zA-Z0-9])/g, '$1 $2')
-    .replace(/`[^\s`]/g, '')
-    .replace(/`+/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
 }
 
 function renderItemsGrid(items) {
@@ -263,63 +344,67 @@ function renderItemsGrid(items) {
       const isGacha = item.isGacha;
       const isEdited = item.isEdited;
 
-      // Badges
+      // Category Pill
       let catBadge = '';
       if (isGacha) {
-        catBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-purple-500/20 text-purple-300 border border-purple-500/30">🎁 GACHA BLOCK</span>';
+        catBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-purple-500/15 text-purple-300 border border-purple-500/30">GACHA BOX</span>';
       } else if (isClothes) {
-        catBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">👕 CLOTHES</span>';
+        catBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-sky-500/15 text-sky-300 border border-sky-500/30">WEARABLE</span>';
       } else if (isBlock) {
-        catBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">🧱 BLOCK</span>';
+        catBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-amber-500/15 text-amber-300 border border-amber-500/30">BLOCK</span>';
       } else {
-        catBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-slate-800 text-slate-400 border border-slate-700">ITEM</span>';
+        catBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-slate-800 text-slate-400 border border-slate-700">ITEM</span>';
       }
 
       // Stat Tags
       const tags = [];
-      if (item.breakHits > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Break: ${item.breakHits} Hits</span>`);
-      if (item.farPunch > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Punch Reach: +${item.farPunch}</span>`);
-      if (item.punchPlace > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Place Reach: +${item.punchPlace}</span>`);
-      if (item.punchHit > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Punch Hit: ${item.punchHit}</span>`);
-      if (item.gems > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">${item.gems}x Gems</span>`);
-      if (item.xp > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">${item.xp}x EXP</span>`);
-      if (item.extraDrops && item.extraDrops.length > 0) tags.push(`<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">${item.extraDrops.length} Drops</span>`);
+      if (item.breakHits > 0) tags.push(`<span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700/80">Break: ${item.breakHits} Hits</span>`);
+      if (item.farPunch > 0) tags.push(`<span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">Punch: +${item.farPunch}</span>`);
+      if (item.punchPlace > 0) tags.push(`<span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">Place: +${item.punchPlace}</span>`);
+      if (item.punchHit > 0) tags.push(`<span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">Strength: ${item.punchHit}</span>`);
+      if (item.gems > 0) tags.push(`<span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">${item.gems}x Gems</span>`);
+      if (item.xp > 0) tags.push(`<span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">${item.xp}x EXP</span>`);
+      if (item.extraDrops && item.extraDrops.length > 0) tags.push(`<span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-200 border border-purple-500/30">${item.extraDrops.length} Drops Pool</span>`);
 
-      const cleanTitle = cleanGrowtopiaColors(item.name);
+      const gtColoredName = renderGtColors(item.name);
 
       return `
-        <div class="glass-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 relative group ${
-          isGacha ? 'border-purple-500/40 shadow-lg shadow-purple-950/20' : isEdited ? 'border-emerald-500/30' : ''
+        <div class="studio-card rounded-xl p-3.5 flex flex-col justify-between group ${
+          isGacha ? 'border-purple-500/40 bg-[#121024]' : isEdited ? 'border-sky-500/30' : ''
         }">
           <div>
-            <!-- Top Badges -->
+            <!-- Header Badges -->
             <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="font-mono text-xs font-black text-slate-400">#${item.id}</span>
+              <button type="button" onclick="copyId(${item.id})" title="Klik untuk salin ID #${item.id}"
+                class="font-mono text-xs font-semibold text-slate-400 hover:text-sky-400 flex items-center gap-1 transition">
+                <span>#${item.id}</span>
+                <i class="fa-regular fa-copy text-[10px] opacity-50 group-hover:opacity-100"></i>
+              </button>
               <div class="flex items-center gap-1.5">
-                ${isEdited ? '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="Custom Modified"></span>' : ''}
+                ${isEdited ? '<span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">CUSTOM</span>' : ''}
                 ${catBadge}
               </div>
             </div>
 
-            <!-- Title & Original Name -->
-            <h3 class="text-sm font-black text-white group-hover:text-emerald-300 transition line-clamp-1 break-words" title="${cleanTitle}">
-              ${cleanTitle}
+            <!-- In-Game Name with authentic GT Colors -->
+            <h3 class="text-xs sm:text-sm font-bold text-white line-clamp-1 break-words font-sans">
+              ${gtColoredName}
             </h3>
-            <p class="text-[11px] text-slate-500 font-mono line-clamp-1 break-all mt-0.5">${item.baseName}</p>
+            <p class="text-[11px] text-slate-500 font-mono line-clamp-1 mt-0.5">${escapeHtml(item.baseName)}</p>
 
-            <!-- Stat tags preview -->
-            <div class="flex flex-wrap gap-1.5 mt-3 min-h-[26px]">
-              ${tags.length > 0 ? tags.join('') : '<span class="text-[10px] text-slate-600 italic">Pengaturan Bawaan</span>'}
+            <!-- Stat Chips -->
+            <div class="flex flex-wrap gap-1 mt-2.5 min-h-[22px]">
+              ${tags.length > 0 ? tags.join('') : '<span class="text-[10px] text-slate-600 font-mono">Bawaan items.dat</span>'}
             </div>
           </div>
 
-          <!-- Bottom Action -->
-          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
-            <span class="text-[11px] text-slate-400 font-mono">Rarity: ${item.rarity}</span>
+          <!-- Bottom Footer -->
+          <div class="mt-3.5 pt-2.5 border-t border-slate-800/80 flex items-center justify-between">
+            <span class="text-[10px] text-slate-500 font-mono">Rarity: ${item.rarity}</span>
             <button onclick="openEditModal(${item.id})"
-              class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-slate-200 text-xs font-bold transition flex items-center gap-1.5 group-hover:bg-emerald-500 group-hover:text-slate-950">
-              <i class="fa-solid fa-pen-to-square"></i>
-              <span>Edit Item</span>
+              class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-sky-600 hover:text-white text-slate-300 text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-sliders text-[10px]"></i>
+              <span>Inspect</span>
             </button>
           </div>
         </div>
@@ -343,30 +428,60 @@ document.getElementById('next-page-btn').addEventListener('click', () => {
 });
 
 // ============================================================================
-// FILTER TABS & SEARCH
+// FILTER PILLS & SEARCH
 // ============================================================================
 document.querySelectorAll('.filter-tab').forEach((btn) => {
-  btn.addEventListener('click', (e) => {
+  btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-tab').forEach((b) => {
-      b.className = 'filter-tab px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-800/80 text-slate-300 hover:bg-slate-700';
+      b.className = 'filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800';
     });
-    btn.className = 'filter-tab px-3.5 py-2 rounded-xl text-xs font-bold transition bg-emerald-500 text-slate-950 shadow-md';
+    btn.className = 'filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-sky-600 text-white shadow-sm';
     currentCategory = btn.getAttribute('data-cat') || 'all';
     loadItems(1);
   });
 });
 
 let searchTimeout = null;
-document.getElementById('item-search').addEventListener('input', (e) => {
+const searchInput = document.getElementById('item-search');
+const searchClearBtn = document.getElementById('search-clear-btn');
+
+searchInput.addEventListener('input', (e) => {
+  const val = e.target.value;
+  if (val) {
+    searchClearBtn.classList.remove('hidden');
+  } else {
+    searchClearBtn.classList.add('hidden');
+  }
+
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(() => {
-    currentSearch = e.target.value.trim();
+    currentSearch = val.trim();
     loadItems(1);
-  }, 350);
+  }, 300);
+});
+
+searchClearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  searchClearBtn.classList.add('hidden');
+  currentSearch = '';
+  loadItems(1);
+  searchInput.focus();
 });
 
 // ============================================================================
-// ITEM EDIT MODAL LOGIC
+// STEPPER NUMBER HELPER
+// ============================================================================
+window.stepNumber = function (inputId, step, min, max) {
+  const el = document.getElementById(inputId);
+  if (!el) return;
+  let val = parseInt(el.value) || 0;
+  val = Math.max(min, Math.min(max, val + step));
+  el.value = val;
+  el.dispatchEvent(new Event('input'));
+};
+
+// ============================================================================
+// ITEM INSPECTOR MODAL LOGIC
 // ============================================================================
 window.openEditModal = async function (itemId) {
   try {
@@ -385,27 +500,30 @@ window.openEditModal = async function (itemId) {
 };
 
 function populateModalFields(item) {
-  document.getElementById('modal-item-badge').textContent = `ID: #${item.id}`;
-  document.getElementById('modal-item-title').textContent = cleanGrowtopiaColors(item.name);
-  document.getElementById('modal-item-subtitle').textContent = `Bawaan Server: ${item.baseName} | Kategori: ${item.category.toUpperCase()}`;
+  document.getElementById('modal-item-badge').textContent = `#${item.id}`;
+  document.getElementById('modal-item-title').innerHTML = renderGtColors(item.name);
+  document.getElementById('modal-item-subtitle').textContent = `Bawaan: ${item.baseName} | Kategori: ${item.category.toUpperCase()}`;
 
-  // Sliders & Values
-  setSlider('input-far-place', 'label-far-place', item.punchPlace, 'Blocks');
-  setSlider('input-far-punch', 'label-far-punch', item.farPunch, 'Blocks');
-  setSlider('input-punch-hit', 'label-punch-hit', item.punchHit, 'Hits');
-  setSlider('input-gems', 'label-gems', item.gems, 'x Gems');
-  setSlider('input-xp', 'label-xp', item.xp, 'x EXP');
+  const editedPill = document.getElementById('modal-item-edited-pill');
+  if (item.isEdited) {
+    editedPill.classList.remove('hidden');
+  } else {
+    editedPill.classList.add('hidden');
+  }
 
-  // Punch Effect
+  // Combat / Wearable values
+  document.getElementById('num-far-place').value = item.punchPlace || 0;
+  document.getElementById('num-far-punch').value = item.farPunch || 0;
+  document.getElementById('num-punch-hit').value = item.punchHit || 0;
+  document.getElementById('num-gems').value = item.gems || 0;
+  document.getElementById('num-xp').value = item.xp || 0;
   document.getElementById('select-punch-id').value = item.punchId || 0;
 
   // Gacha & Blocks
-  const checkGacha = document.getElementById('check-gacha');
-  checkGacha.checked = Boolean(item.isGacha);
+  document.getElementById('check-gacha').checked = Boolean(item.isGacha);
   document.getElementById('check-farmable').checked = Boolean(item.property_farmable);
   document.getElementById('check-blocked').checked = Boolean(item.property_blocked);
-  const breakHitsInput = document.getElementById('input-break-hits');
-  if (breakHitsInput) breakHitsInput.value = item.breakHits || 0;
+  document.getElementById('input-break-hits').value = item.breakHits || 0;
   document.getElementById('input-seed-chance').value = item.changeDropSeeds || 0;
   document.getElementById('input-block-chance').value = item.blockChance !== undefined ? item.blockChance : -1;
 
@@ -413,7 +531,10 @@ function populateModalFields(item) {
   renderGachaDrops(item.extraDrops || [], item.extraChance || []);
 
   // General tab
-  document.getElementById('input-item-name').value = item.name !== item.baseName ? item.name : '';
+  const nameInput = document.getElementById('input-item-name');
+  nameInput.value = item.name !== item.baseName ? item.name : '';
+  updateNameLivePreview(nameInput.value || item.baseName);
+
   document.getElementById('input-item-desc').value = item.desc || '';
   document.getElementById('input-rarity').value = item.rarity || 0;
   document.getElementById('input-price').value = item.itemPrice || 0;
@@ -421,27 +542,23 @@ function populateModalFields(item) {
   document.getElementById('check-blacklist').checked = Boolean(item.property_blacklist);
   document.getElementById('check-unobtainable').checked = Boolean(item.property_unobtainable);
 
-  // Switch to relevant tab: if block -> tab-block, else -> tab-clothes
-  if (item.category === 'block' || item.isGacha) {
+  // Switch to relevant tab
+  if ((item.category === 'block' || item.isGacha) && !item.farPunch && !item.punchPlace) {
     switchModalTab('block');
   } else {
     switchModalTab('clothes');
   }
 }
 
-function setSlider(inputId, labelId, value, unit) {
-  const input = document.getElementById(inputId);
-  const label = document.getElementById(labelId);
-  input.value = value || 0;
-  label.textContent = `${value || 0} ${unit}`;
+// Live preview for custom in-game name
+function updateNameLivePreview(text) {
+  const preview = document.getElementById('name-live-preview');
+  if (!preview) return;
+  preview.innerHTML = renderGtColors(text || 'Default Name');
 }
 
-// Link sliders to labels
-['input-far-place:label-far-place:Blocks', 'input-far-punch:label-far-punch:Blocks', 'input-punch-hit:label-punch-hit:Hits', 'input-gems:label-gems:x Gems', 'input-xp:label-xp:x EXP'].forEach((def) => {
-  const [inpId, lblId, unit] = def.split(':');
-  document.getElementById(inpId).addEventListener('input', (e) => {
-    document.getElementById(lblId).textContent = `${e.target.value} ${unit}`;
-  });
+document.getElementById('input-item-name').addEventListener('input', (e) => {
+  updateNameLivePreview(e.target.value || (currentEditingItem ? currentEditingItem.baseName : ''));
 });
 
 // Modal Tabs
@@ -451,10 +568,10 @@ function switchModalTab(tab) {
     const btn = document.getElementById(`tab-btn-${t}`);
     const panel = document.getElementById(`panel-${t}`);
     if (t === tab) {
-      btn.className = 'modal-tab-btn py-2.5 px-4 text-xs font-bold border-b-2 border-emerald-500 text-emerald-400';
+      btn.className = 'modal-tab-btn py-2 px-3 text-xs font-semibold border-b-2 border-sky-500 text-sky-400';
       panel.classList.remove('hidden');
     } else {
-      btn.className = 'modal-tab-btn py-2.5 px-4 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200';
+      btn.className = 'modal-tab-btn py-2 px-3 text-xs font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200';
       panel.classList.add('hidden');
     }
   });
@@ -473,101 +590,201 @@ document.getElementById('close-modal-btn').addEventListener('click', closeEditMo
 document.getElementById('btn-cancel-modal').addEventListener('click', closeEditModal);
 
 // ============================================================================
-// GACHA DROPS TABLE BUILDER
+// STUDIO PRESETS ENGINE
 // ============================================================================
+window.applyPreset = function (presetType) {
+  if (!currentEditingItem) return;
+
+  if (presetType === 'rayman') {
+    document.getElementById('num-far-punch').value = 10;
+    document.getElementById('num-far-place').value = 10;
+    document.getElementById('num-punch-hit').value = 1;
+    document.getElementById('num-gems').value = 50;
+    document.getElementById('select-punch-id').value = 80;
+    switchModalTab('clothes');
+    showToast('Preset Rayman Reach (+10 Far, 1-Hit, 50x Gems) diterapkan!', 'info');
+  } else if (presetType === 'instabreak') {
+    document.getElementById('num-punch-hit').value = 1;
+    switchModalTab('clothes');
+    showToast('Preset 1-Hit Instant Break diterapkan!', 'info');
+  } else if (presetType === 'gemsfarm') {
+    document.getElementById('num-gems').value = 50;
+    document.getElementById('num-xp').value = 10;
+    document.getElementById('check-farmable').checked = true;
+    switchModalTab('clothes');
+    showToast('Preset High-Yield Farm (50x Gems, 10x EXP, Farmable) diterapkan!', 'info');
+  } else if (presetType === 'gachabox') {
+    document.getElementById('check-gacha').checked = true;
+    switchModalTab('block');
+    const existingRows = document.querySelectorAll('.gacha-drop-row');
+    if (existingRows.length === 0) {
+      quickAddCurrencyDrop(242, 'World Lock');
+      quickAddCurrencyDrop(1796, 'Diamond Lock');
+    }
+    showToast('Block dikonfigurasi sebagai Gacha Box! Silakan atur hadiah drop.', 'info');
+  }
+};
+
+// ============================================================================
+// GACHA DROPS POOL BUILDER & LIVE RESOLUTION
+// ============================================================================
+async function lookupItemName(id) {
+  const numId = Number(id);
+  if (!numId || numId <= 0) return null;
+  if (itemLookupCache.has(numId)) return itemLookupCache.get(numId);
+
+  try {
+    const res = await apiRequest(`/api/items/lookup/${numId}`);
+    if (res && res.status === 'ok') {
+      itemLookupCache.set(numId, res);
+      return res;
+    }
+  } catch {}
+  return null;
+}
+
+function updateGachaTotal() {
+  let totalChance = 0;
+  document.querySelectorAll('.drop-chance').forEach((inp) => {
+    totalChance += parseInt(inp.value) || 0;
+  });
+
+  const summary = document.getElementById('gacha-chance-summary');
+  if (summary) {
+    summary.textContent = `Total Peluang: ${totalChance}%`;
+    if (totalChance === 100) {
+      summary.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+    } else {
+      summary.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-200 border border-purple-500/30';
+    }
+  }
+}
+
 function renderGachaDrops(drops, chances) {
   const container = document.getElementById('gacha-drops-list');
   container.innerHTML = '';
 
   if (!drops || drops.length === 0) {
     container.innerHTML = `
-      <div class="py-4 text-center text-xs text-slate-500 italic bg-slate-900/50 rounded-lg border border-dashed border-slate-800">
-        Belum ada drop hadiah gacha. Klik "+ Tambah Hadiah" untuk membuat drop pool.
+      <div class="py-4 text-center text-xs text-slate-500 italic bg-slate-900/40 rounded-xl border border-dashed border-slate-800">
+        Belum ada drop hadiah gacha. Klik "+ Hadiah" atau tombol cepat di atas untuk menambahkan hadiah.
       </div>
     `;
+    updateGachaTotal();
     return;
   }
-
-  // Column header for clean alignment without clumping
-  const header = document.createElement('div');
-  header.className = 'flex items-center gap-2 px-3 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider select-none';
-  header.innerHTML = `
-    <div class="w-8 text-center">#</div>
-    <div class="flex-1">ID Hadiah (Item ID)</div>
-    <div class="w-24 text-center">Jumlah</div>
-    <div class="w-28 text-center">Peluang (%)</div>
-    <div class="w-8"></div>
-  `;
-  container.appendChild(header);
 
   drops.forEach((d, idx) => {
     const itemId = d[0] || 0;
     const count = d[1] || 1;
     const chance = chances && chances[idx] !== undefined ? chances[idx] : 10;
+    appendGachaDropRow(container, itemId, count, chance, idx + 1);
+  });
 
-    const row = document.createElement('div');
-    row.className = 'gacha-drop-row flex items-center gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-xs';
-    row.innerHTML = `
-      <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-mono font-bold">
-        ${idx + 1}
+  updateGachaTotal();
+}
+
+function appendGachaDropRow(container, itemId, count, chance, index) {
+  const emptyNote = container.querySelector('div.text-center');
+  if (emptyNote) emptyNote.remove();
+
+  const row = document.createElement('div');
+  row.className = 'gacha-drop-row p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex flex-col gap-2';
+  row.innerHTML = `
+    <div class="flex items-center gap-2">
+      <span class="w-6 h-6 rounded bg-purple-500/10 text-purple-400 font-mono font-bold text-xs flex items-center justify-center shrink-0">
+        #${index}
+      </span>
+      <div class="flex-1 flex items-center gap-2">
+        <input type="number" placeholder="Item ID (cth: 242)" value="${itemId || ''}"
+          class="drop-item-id w-28 bg-slate-950 border border-slate-700 rounded-lg py-1 px-2 text-xs text-white font-mono focus:border-purple-500">
+        <span class="drop-item-resolved text-[11px] font-mono text-slate-400 truncate flex-1">
+          <i class="fa-solid fa-spinner fa-spin text-[10px]"></i> Memuat nama...
+        </span>
       </div>
-      <div class="flex-1">
-        <input type="number" placeholder="Item ID (cth: 242)" value="${itemId}" class="drop-item-id w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2.5 text-xs text-white font-mono focus:border-purple-500">
+      <div class="flex items-center gap-1 shrink-0">
+        <span class="text-[10px] text-slate-500 font-mono">Jml:</span>
+        <input type="number" min="1" max="200" value="${count}"
+          class="drop-count w-16 bg-slate-950 border border-slate-700 rounded-lg py-1 px-2 text-xs text-center text-white font-mono focus:border-purple-500">
       </div>
-      <div class="w-24">
-        <input type="number" min="1" max="200" placeholder="Count" value="${count}" class="drop-count w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2.5 text-xs text-white font-mono focus:border-purple-500" title="Jumlah Item">
+      <div class="flex items-center gap-1 shrink-0">
+        <span class="text-[10px] text-slate-500 font-mono">Peluang:</span>
+        <input type="number" min="0" max="100" value="${chance}"
+          class="drop-chance w-14 bg-slate-950 border border-slate-700 rounded-lg py-1 px-1.5 text-xs text-center text-purple-300 font-mono focus:border-purple-500">
+        <span class="text-[10px] text-slate-400 font-mono">%</span>
       </div>
-      <div class="w-28 flex items-center gap-1">
-        <input type="number" min="0" max="100" placeholder="Chance %" value="${chance}" class="drop-chance w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2 text-xs text-white font-mono focus:border-purple-500" title="Peluang Drop (%)">
-        <span class="text-slate-400 font-mono">%</span>
-      </div>
-      <button type="button" onclick="this.closest('.gacha-drop-row').remove()" class="w-8 h-8 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 flex items-center justify-center transition" title="Hapus Hadiah">
-        <i class="fa-solid fa-trash-can"></i>
+      <button type="button" class="btn-remove-drop w-7 h-7 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 flex items-center justify-center transition shrink-0" title="Hapus Hadiah">
+        <i class="fa-solid fa-trash-can text-xs"></i>
       </button>
-    `;
-    container.appendChild(row);
+    </div>
+  `;
+
+  container.appendChild(row);
+
+  const idInput = row.querySelector('.drop-item-id');
+  const resolvedLabel = row.querySelector('.drop-item-resolved');
+  const chanceInput = row.querySelector('.drop-chance');
+  const removeBtn = row.querySelector('.btn-remove-drop');
+
+  const updateItemName = async (idVal) => {
+    if (!idVal || idVal <= 0) {
+      resolvedLabel.textContent = 'Masukkan Item ID';
+      resolvedLabel.className = 'drop-item-resolved text-[11px] font-mono text-slate-500 truncate flex-1';
+      return;
+    }
+    const info = await lookupItemName(idVal);
+    if (info && info.found) {
+      resolvedLabel.innerHTML = `<span class="text-slate-200 font-semibold">${renderGtColors(info.name)}</span> <span class="text-slate-500 text-[10px]">(Rarity: ${info.rarity})</span>`;
+    } else {
+      resolvedLabel.textContent = `Item #${idVal} (Unknown)`;
+      resolvedLabel.className = 'drop-item-resolved text-[11px] font-mono text-amber-400/80 truncate flex-1';
+    }
+  };
+
+  updateItemName(itemId);
+
+  let idDebounce = null;
+  idInput.addEventListener('input', (e) => {
+    clearTimeout(idDebounce);
+    idDebounce = setTimeout(() => {
+      updateItemName(parseInt(e.target.value) || 0);
+    }, 250);
+  });
+
+  chanceInput.addEventListener('input', updateGachaTotal);
+
+  removeBtn.addEventListener('click', () => {
+    row.remove();
+    updateGachaTotal();
+    // Renumber rows
+    const rows = container.querySelectorAll('.gacha-drop-row');
+    if (rows.length === 0) {
+      container.innerHTML = `
+        <div class="py-4 text-center text-xs text-slate-500 italic bg-slate-900/40 rounded-xl border border-dashed border-slate-800">
+          Belum ada drop hadiah gacha. Klik "+ Hadiah" atau tombol cepat di atas untuk menambahkan hadiah.
+        </div>
+      `;
+    } else {
+      rows.forEach((r, i) => {
+        r.querySelector('span.w-6').textContent = `#${i + 1}`;
+      });
+    }
   });
 }
 
+window.quickAddCurrencyDrop = function (itemId, name) {
+  const container = document.getElementById('gacha-drops-list');
+  const count = container.querySelectorAll('.gacha-drop-row').length + 1;
+  appendGachaDropRow(container, itemId, 1, 10, count);
+  updateGachaTotal();
+  showToast(`Ditambahkan ${name} (#${itemId}) ke drop pool!`, 'info');
+};
+
 document.getElementById('btn-add-drop').addEventListener('click', () => {
   const container = document.getElementById('gacha-drops-list');
-  const emptyNote = container.querySelector('div.text-center');
-  if (emptyNote) {
-    emptyNote.remove();
-    const header = document.createElement('div');
-    header.className = 'flex items-center gap-2 px-3 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider select-none';
-    header.innerHTML = `
-      <div class="w-8 text-center">#</div>
-      <div class="flex-1">ID Hadiah (Item ID)</div>
-      <div class="w-24 text-center">Jumlah</div>
-      <div class="w-28 text-center">Peluang (%)</div>
-      <div class="w-8"></div>
-    `;
-    container.appendChild(header);
-  }
-
   const count = container.querySelectorAll('.gacha-drop-row').length + 1;
-  const row = document.createElement('div');
-  row.className = 'gacha-drop-row flex items-center gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-xs';
-  row.innerHTML = `
-    <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-mono font-bold">
-      ${count}
-    </div>
-    <div class="flex-1">
-      <input type="number" placeholder="Item ID (Contoh: 242)" value="" class="drop-item-id w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2.5 text-xs text-white font-mono focus:border-purple-500">
-    </div>
-    <div class="w-24">
-      <input type="number" min="1" max="200" placeholder="Jumlah" value="1" class="drop-count w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2.5 text-xs text-white font-mono focus:border-purple-500">
-    </div>
-    <div class="w-28 flex items-center gap-1">
-      <input type="number" min="0" max="100" placeholder="Chance %" value="10" class="drop-chance w-full bg-slate-900 border border-slate-700 rounded-lg py-1.5 px-2 text-xs text-white font-mono focus:border-purple-500">
-      <span class="text-slate-400 font-mono">%</span>
-    </div>
-    <button type="button" onclick="this.closest('.gacha-drop-row').remove()" class="w-8 h-8 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 flex items-center justify-center transition">
-      <i class="fa-solid fa-trash-can"></i>
-    </button>
-  `;
-  container.appendChild(row);
+  appendGachaDropRow(container, '', 1, 10, count);
+  updateGachaTotal();
 });
 
 // ============================================================================
@@ -578,10 +795,9 @@ document.getElementById('btn-save-item').addEventListener('click', async () => {
 
   const btn = document.getElementById('btn-save-item');
   btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i><span>Menyimpan ke Server...</span>';
+  btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i><span>Menerapkan ke Game...</span>';
 
   try {
-    // Collect drops
     const drops = [];
     const chances = [];
     document.querySelectorAll('.gacha-drop-row').forEach((row) => {
@@ -602,13 +818,13 @@ document.getElementById('btn-save-item').addEventListener('click', async () => {
       name: customName || currentEditingItem.baseName,
       desc: document.getElementById('input-item-desc').value.trim(),
       rarity: parseInt(document.getElementById('input-rarity').value) || 0,
-      breakHits: parseInt(document.getElementById('input-break-hits')?.value) || 0,
+      breakHits: parseInt(document.getElementById('input-break-hits').value) || 0,
       itemPrice: parseInt(document.getElementById('input-price').value) || 0,
-      farPunch: parseInt(document.getElementById('input-far-punch').value) || 0,
-      punchPlace: parseInt(document.getElementById('input-far-place').value) || 0,
-      punchHit: parseInt(document.getElementById('input-punch-hit').value) || 0,
-      gems: parseInt(document.getElementById('input-gems').value) || 0,
-      xp: parseInt(document.getElementById('input-xp').value) || 0,
+      farPunch: parseInt(document.getElementById('num-far-punch').value) || 0,
+      punchPlace: parseInt(document.getElementById('num-far-place').value) || 0,
+      punchHit: parseInt(document.getElementById('num-punch-hit').value) || 0,
+      gems: parseInt(document.getElementById('num-gems').value) || 0,
+      xp: parseInt(document.getElementById('num-xp').value) || 0,
       punchId: parseInt(document.getElementById('select-punch-id').value) || 0,
       property_gacha: isGacha,
       extraDrops: drops,
@@ -640,7 +856,7 @@ document.getElementById('btn-save-item').addEventListener('click', async () => {
     showToast(`Error: ${err.message}`, 'error');
   } finally {
     btn.disabled = false;
-    btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i><span>Simpan & Terapkan Live</span>';
+    btn.innerHTML = '<i class="fa-solid fa-floppy-disk text-xs"></i><span>Simpan & Terapkan Live</span>';
   }
 });
 
@@ -650,7 +866,7 @@ document.getElementById('btn-save-item').addEventListener('click', async () => {
 document.getElementById('btn-reset-item').addEventListener('click', async () => {
   if (!currentEditingItem) return;
 
-  if (!confirm(`Apakah Anda yakin ingin me-reset item #${currentEditingItem.id} (${currentEditingItem.baseName}) ke pengaturan bawaan server?`)) {
+  if (!confirm(`Reset item #${currentEditingItem.id} (${currentEditingItem.baseName}) ke bawaan game core?`)) {
     return;
   }
 
@@ -682,6 +898,7 @@ document.getElementById('btn-reset-item').addEventListener('click', async () => 
 // ACTIVITY & AUDIT LOGS
 // ============================================================================
 let auditLogsList = [];
+let isCurrentUserConfig = false;
 
 function formatLogTimestamp(ts) {
   if (!ts) return '-';
@@ -711,21 +928,19 @@ function timeAgo(ts) {
 function getActionBadge(action) {
   const act = String(action || '').toUpperCase();
   if (act === 'SAVE_ITEM') {
-    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1"><i class="fa-solid fa-floppy-disk"></i> SAVE ITEM</span>';
+    return '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">SAVE</span>';
   }
   if (act === 'SET_GACHA') {
-    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center gap-1"><i class="fa-solid fa-gift"></i> SET GACHA</span>';
+    return '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">GACHA</span>';
   }
   if (act === 'RESET_ITEM') {
-    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30 flex items-center gap-1"><i class="fa-solid fa-arrow-rotate-left"></i> RESET ITEM</span>';
+    return '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">RESET</span>';
   }
   if (act === 'STAFF_LOGIN') {
-    return '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/30 flex items-center gap-1"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</span>';
+    return '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-800 text-slate-300 border border-slate-700">LOGIN</span>';
   }
-  return `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-700 text-slate-300 border border-slate-600">${act}</span>`;
+  return `<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-800 text-slate-400">${act}</span>`;
 }
-
-let isCurrentUserConfig = false;
 
 function renderLogs(filterQuery = '') {
   const container = document.getElementById('logs-container');
@@ -740,63 +955,45 @@ function renderLogs(filterQuery = '') {
 
   const totalEl = document.getElementById('modal-logs-total');
   if (totalEl) {
-    if (isCurrentUserConfig) {
-      totalEl.innerHTML = `<span class="text-amber-400 font-bold">🔑 Config View:</span> ${filtered.length} logs`;
-    } else {
-      totalEl.innerHTML = `<span class="text-blue-400 font-bold">🎖️ Personal View:</span> ${filtered.length} logs`;
-    }
-  }
-
-  let noticeHtml = '';
-  if (!isCurrentUserConfig) {
-    noticeHtml = `
-      <div class="p-3 mb-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-200 flex items-center gap-2">
-        <i class="fa-solid fa-circle-info text-blue-400 text-sm"></i>
-        <span><b>Mode Staff Biasa:</b> Anda hanya dapat melihat riwayat aktivitas akun Anda sendiri. Hak akses melihat seluruh log staf lain dipegang oleh Role Config.</span>
-      </div>
-    `;
+    totalEl.textContent = `${filtered.length} logs`;
   }
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      ${noticeHtml}
-      <div class="py-16 text-center flex flex-col items-center justify-center gap-2 text-slate-400">
-        <i class="fa-regular fa-clipboard text-3xl text-slate-600"></i>
-        <p class="text-xs font-semibold text-slate-300">Belum ada riwayat aktivitas yang cocok.</p>
-        <p class="text-[11px] text-slate-500">Aktivitas staff seperti login, simpan item, dan reset akan tercatat otomatis di sini.</p>
+      <div class="py-12 text-center text-slate-500">
+        <i class="fa-regular fa-clipboard text-2xl mb-1 text-slate-600 block"></i>
+        Belum ada riwayat aktivitas yang cocok.
       </div>
     `;
     return;
   }
 
-  container.innerHTML = noticeHtml + filtered.map((log) => {
+  container.innerHTML = filtered.map((log) => {
     const timeFormatted = formatLogTimestamp(log.timestamp);
     const ago = timeAgo(log.timestamp);
     const badgeHtml = getActionBadge(log.action);
-    const growId = log.growId || 'Unknown Staff';
+    const growId = log.growId || 'Staff';
     const role = log.role || 'Staff';
 
     return `
-      <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 flex flex-col gap-2 transition">
+      <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col gap-1.5">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold font-mono">
+            <span class="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center text-xs font-mono font-bold">
               ${growId.charAt(0).toUpperCase()}
             </span>
-            <div>
-              <span class="text-xs font-bold text-white">${growId}</span>
-              <span class="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700/60 font-mono">${role}</span>
-            </div>
+            <span class="font-bold text-slate-200 text-xs">${escapeHtml(growId)}</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-800">${escapeHtml(role)}</span>
             ${badgeHtml}
           </div>
-          <div class="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
+          <div class="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
             <span>${timeFormatted}</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 text-slate-500">${ago}</span>
+            <span class="text-slate-600">(${ago})</span>
           </div>
         </div>
-        <div class="text-xs text-slate-300 pl-9 font-sans leading-relaxed">
-          ${log.details || 'Tidak ada rincian keterangan.'}
-        </div>
+        <p class="text-xs text-slate-300 pl-8 leading-relaxed font-sans">
+          ${escapeHtml(log.details || '')}
+        </p>
       </div>
     `;
   }).join('');
@@ -806,22 +1003,13 @@ async function openLogsModal() {
   const modal = document.getElementById('logs-modal');
   if (!modal) return;
   modal.classList.remove('hidden');
-  const container = document.getElementById('logs-container');
-  if (container) {
-    container.innerHTML = `
-      <div class="py-16 text-center flex flex-col items-center justify-center gap-2 text-slate-400">
-        <i class="fa-solid fa-circle-notch fa-spin text-2xl text-emerald-400"></i>
-        <p class="text-xs font-semibold">Memuat riwayat log dari server Project-D...</p>
-      </div>
-    `;
-  }
 
   try {
     const data = await apiRequest('/api/logs');
     if (data.status === 'ok') {
       auditLogsList = data.logs || [];
       isCurrentUserConfig = Boolean(data.isConfig);
-      const searchVal = document.getElementById('log-search-input') ? document.getElementById('log-search-input').value : '';
+      const searchVal = document.getElementById('log-search-input')?.value || '';
       renderLogs(searchVal);
       if (document.getElementById('logs-count-badge')) {
         document.getElementById('logs-count-badge').textContent = auditLogsList.length;
@@ -833,29 +1021,23 @@ async function openLogsModal() {
 }
 
 function closeLogsModal() {
-  const modal = document.getElementById('logs-modal');
-  if (modal) modal.classList.add('hidden');
+  document.getElementById('logs-modal').classList.add('hidden');
 }
 
-if (document.getElementById('open-logs-btn')) {
-  document.getElementById('open-logs-btn').addEventListener('click', openLogsModal);
-}
-if (document.getElementById('btn-close-logs-modal')) {
-  document.getElementById('btn-close-logs-modal').addEventListener('click', closeLogsModal);
-}
-if (document.getElementById('btn-refresh-logs')) {
-  document.getElementById('btn-refresh-logs').addEventListener('click', async () => {
-    await openLogsModal();
-    showToast('Log aktivitas berhasil diperbarui!');
-  });
-}
-if (document.getElementById('log-search-input')) {
-  document.getElementById('log-search-input').addEventListener('input', (e) => {
-    renderLogs(e.target.value);
-  });
-}
+document.getElementById('open-logs-btn').addEventListener('click', openLogsModal);
+document.getElementById('btn-close-logs-modal').addEventListener('click', closeLogsModal);
+document.getElementById('btn-refresh-logs').addEventListener('click', async () => {
+  await openLogsModal();
+  showToast('Logs diperbarui!');
+});
 
-// Keyboard shortcut: '/' focuses search
+document.getElementById('log-search-input').addEventListener('input', (e) => {
+  renderLogs(e.target.value);
+});
+
+// ============================================================================
+// KEYBOARD SHORTCUTS
+// ============================================================================
 window.addEventListener('keydown', (e) => {
   if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
     e.preventDefault();
@@ -867,5 +1049,5 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// Start initialization
+// Initialize Studio
 initAuth();

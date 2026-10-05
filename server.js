@@ -33,6 +33,14 @@ function getCandidatePath(candidates) {
   return candidates[candidates.length - 1];
 }
 
+const PROJECT_D_RELEASE_DIR = getCandidatePath([
+  process.env.PROJECT_D_RELEASE_DIR,
+  '/root/downloads/Project-D/Core/x64/Release',
+  '/root/downloads/Project-D',
+  path.join(__dirname, '..', 'downloads', 'Project-D', 'Core', 'x64', 'Release'),
+  path.join(__dirname, 'data'),
+]);
+
 const PLAYERS_DIR = getCandidatePath([
   process.env.DATABASE_PLAYERS_DIR,
   '/root/downloads/Project-D/Core/x64/Release/database/players',
@@ -757,7 +765,7 @@ app.post('/api/auth/logout', requireStaffAuth, (req, res) => {
 });
 
 // 4. Punch Effects List
-app.get('/api/items/punch-effects', requireStaffAuth, (_req, res) => {
+app.get(['/api/items/punch-effects', '/api/effects/punch'], (_req, res) => {
   return res.json({ status: 'ok', effects: PUNCH_EFFECTS });
 });
 
@@ -861,6 +869,35 @@ app.get('/api/items/:id', requireStaffAuth, async (req, res) => {
   return res.json({ status: 'ok', item: formatted });
 });
 
+// 6.5 Quick Item Lookup (for Gacha drop builder and live item previews)
+app.get('/api/items/lookup/:id', requireStaffAuth, (req, res) => {
+  const id = Number(req.params.id);
+  if (isNaN(id) || id < 0) {
+    return res.status(400).json({ status: 'error', message: 'Item ID tidak valid.' });
+  }
+
+  const dictEntry = itemsDict[id];
+  const editEntry = editItemMap.get(id);
+
+  if (!dictEntry && !editEntry) {
+    return res.json({ status: 'ok', id, found: false, name: `Item #${id}`, rarity: 0, category: 'unknown' });
+  }
+
+  const action = dictEntry ? Number(dictEntry.action) || 0 : 0;
+  return res.json({
+    status: 'ok',
+    id,
+    found: true,
+    name: editEntry && editEntry.Name ? editEntry.Name : (dictEntry ? dictEntry.name : `Item #${id}`),
+    baseName: dictEntry ? dictEntry.name : `Item #${id}`,
+    rarity: editEntry && editEntry.rarity !== undefined ? editEntry.rarity : (dictEntry ? dictEntry.rarity : 0),
+    action,
+    category: categorizeItem(action),
+    isEdited: Boolean(editEntry),
+    isGacha: Boolean(editEntry && editEntry.property_gacha),
+  });
+});
+
 // 7. Save Item Changes (Clothes / Block / Gacha)
 app.post('/api/items/save', requireStaffAuth, async (req, res) => {
   try {
@@ -872,33 +909,34 @@ app.post('/api/items/save', requireStaffAuth, async (req, res) => {
 
     const dictEntry = itemsDict[id];
     const baseName = dictEntry ? dictEntry.name : `Item #${id}`;
+    const existing = editItemMap.get(id) || {};
 
-    // Prepare Edit_ItemV2 object
+    // Prepare Edit_ItemV2 object with defensive merge to prevent wiping out unedited properties
     const updated = {
       ID: id,
-      Name: b.name ? String(b.name).trim() : baseName,
-      Desc: b.desc !== undefined ? String(b.desc).trim() : 'This item has been modified by Staff.',
-      rarity: b.rarity !== undefined ? Math.max(0, parseInt(b.rarity) || 0) : (dictEntry ? dictEntry.rarity : 0),
-      Break_Hits: Math.max(0, parseInt(b.breakHits !== undefined ? b.breakHits : (b.Break_Hits !== undefined ? b.Break_Hits : 0)) || 0),
-      Far_Punch: Math.max(0, Math.min(25, parseInt(b.farPunch !== undefined ? b.farPunch : (b.Far_Punch !== undefined ? b.Far_Punch : 0)) || 0)),
-      Punch_Place: Math.max(0, Math.min(25, parseInt(b.punchPlace !== undefined ? b.punchPlace : (b.Punch_Place !== undefined ? b.Punch_Place : 0)) || 0)),
-      Punch_Hit: Math.max(0, Math.min(25, parseInt(b.punchHit !== undefined ? b.punchHit : (b.Punch_Hit !== undefined ? b.Punch_Hit : 0)) || 0)),
-      Punch_Id: Math.max(0, parseInt(b.punchId !== undefined ? b.punchId : (b.Punch_Id !== undefined ? b.Punch_Id : 0)) || 0),
-      Gems: Math.max(0, parseInt(b.gems !== undefined ? b.gems : (b.Gems !== undefined ? b.Gems : 0)) || 0),
-      Xp: Math.max(0, parseInt(b.xp !== undefined ? b.xp : (b.Xp !== undefined ? b.Xp : 0)) || 0),
-      Bonus: Math.max(0, parseInt(b.bonus !== undefined ? b.bonus : (b.Bonus !== undefined ? b.Bonus : 0)) || 0),
-      Item_Price: Math.max(0, parseInt(b.itemPrice !== undefined ? b.itemPrice : (b.Item_Price !== undefined ? b.Item_Price : 0)) || 0),
-      Change_Drop_Seeds: Math.max(0, Math.min(100, parseInt(b.changeDropSeeds !== undefined ? b.changeDropSeeds : (b.Change_Drop_Seeds !== undefined ? b.Change_Drop_Seeds : 0)) || 0)),
-      Block_Chance: parseInt(b.blockChance !== undefined ? b.blockChance : (b.Block_Chance !== undefined ? b.Block_Chance : -1)),
-      ExtraDropsMode: b.extraDropsMode ? 1 : (b.ExtraDropsMode ? 1 : 0),
-      Extra_Drops: Array.isArray(b.extraDrops || b.Extra_Drops) ? (b.extraDrops || b.Extra_Drops).map((d) => [Number(d[0]), Number(d[1])]) : [],
-      Extra_Chance: Array.isArray(b.extraChance || b.Extra_Chance) ? (b.extraChance || b.Extra_Chance).map((c) => Number(c)) : [],
-      property_gacha: Boolean(b.property_gacha || b.isGacha),
-      property_farmable: Boolean(b.property_farmable),
-      property_untradeable: Boolean(b.property_untradeable),
-      property_blacklist: Boolean(b.property_blacklist),
-      property_blocked: Boolean(b.property_blocked),
-      property_unobtainable: Boolean(b.property_unobtainable),
+      Name: b.name !== undefined ? (String(b.name).trim() || baseName) : (existing.Name || baseName),
+      Desc: b.desc !== undefined ? String(b.desc).trim() : (existing.Desc || 'This item has been modified by Staff.'),
+      rarity: b.rarity !== undefined ? Math.max(0, parseInt(b.rarity) || 0) : (existing.rarity !== undefined ? existing.rarity : (dictEntry ? dictEntry.rarity : 0)),
+      Break_Hits: b.breakHits !== undefined ? Math.max(0, parseInt(b.breakHits) || 0) : (b.Break_Hits !== undefined ? Math.max(0, parseInt(b.Break_Hits) || 0) : (existing.Break_Hits || 0)),
+      Far_Punch: b.farPunch !== undefined ? Math.max(0, Math.min(25, parseInt(b.farPunch) || 0)) : (b.Far_Punch !== undefined ? Math.max(0, Math.min(25, parseInt(b.Far_Punch) || 0)) : (existing.Far_Punch || 0)),
+      Punch_Place: b.punchPlace !== undefined ? Math.max(0, Math.min(25, parseInt(b.punchPlace) || 0)) : (b.Punch_Place !== undefined ? Math.max(0, Math.min(25, parseInt(b.Punch_Place) || 0)) : (existing.Punch_Place || 0)),
+      Punch_Hit: b.punchHit !== undefined ? Math.max(0, Math.min(25, parseInt(b.punchHit) || 0)) : (b.Punch_Hit !== undefined ? Math.max(0, Math.min(25, parseInt(b.Punch_Hit) || 0)) : (existing.Punch_Hit || 0)),
+      Punch_Id: b.punchId !== undefined ? Math.max(0, parseInt(b.punchId) || 0) : (b.Punch_Id !== undefined ? Math.max(0, parseInt(b.Punch_Id) || 0) : (existing.Punch_Id || 0)),
+      Gems: b.gems !== undefined ? Math.max(0, parseInt(b.gems) || 0) : (b.Gems !== undefined ? Math.max(0, parseInt(b.Gems) || 0) : (existing.Gems || 0)),
+      Xp: b.xp !== undefined ? Math.max(0, parseInt(b.xp) || 0) : (b.Xp !== undefined ? Math.max(0, parseInt(b.Xp) || 0) : (existing.Xp || 0)),
+      Bonus: b.bonus !== undefined ? Math.max(0, parseInt(b.bonus) || 0) : (b.Bonus !== undefined ? Math.max(0, parseInt(b.Bonus) || 0) : (existing.Bonus || 0)),
+      Item_Price: b.itemPrice !== undefined ? Math.max(0, parseInt(b.itemPrice) || 0) : (b.Item_Price !== undefined ? Math.max(0, parseInt(b.Item_Price) || 0) : (existing.Item_Price || 0)),
+      Change_Drop_Seeds: b.changeDropSeeds !== undefined ? Math.max(0, Math.min(100, parseInt(b.changeDropSeeds) || 0)) : (b.Change_Drop_Seeds !== undefined ? Math.max(0, Math.min(100, parseInt(b.Change_Drop_Seeds) || 0)) : (existing.Change_Drop_Seeds || 0)),
+      Block_Chance: b.blockChance !== undefined ? parseInt(b.blockChance) : (b.Block_Chance !== undefined ? parseInt(b.Block_Chance) : (existing.Block_Chance !== undefined ? existing.Block_Chance : -1)),
+      ExtraDropsMode: b.extraDropsMode !== undefined ? (b.extraDropsMode ? 1 : 0) : (b.ExtraDropsMode !== undefined ? (b.ExtraDropsMode ? 1 : 0) : (existing.ExtraDropsMode || 0)),
+      Extra_Drops: Array.isArray(b.extraDrops || b.Extra_Drops) ? (b.extraDrops || b.Extra_Drops).map((d) => [Number(d[0]), Number(d[1])]) : (existing.Extra_Drops || []),
+      Extra_Chance: Array.isArray(b.extraChance || b.Extra_Chance) ? (b.extraChance || b.Extra_Chance).map((c) => Number(c)) : (existing.Extra_Chance || []),
+      property_gacha: b.property_gacha !== undefined ? Boolean(b.property_gacha) : (b.isGacha !== undefined ? Boolean(b.isGacha) : Boolean(existing.property_gacha)),
+      property_farmable: b.property_farmable !== undefined ? Boolean(b.property_farmable) : Boolean(existing.property_farmable),
+      property_untradeable: b.property_untradeable !== undefined ? Boolean(b.property_untradeable) : Boolean(existing.property_untradeable),
+      property_blacklist: b.property_blacklist !== undefined ? Boolean(b.property_blacklist) : Boolean(existing.property_blacklist),
+      property_blocked: b.property_blocked !== undefined ? Boolean(b.property_blocked) : Boolean(existing.property_blocked),
+      property_unobtainable: b.property_unobtainable !== undefined ? Boolean(b.property_unobtainable) : Boolean(existing.property_unobtainable),
     };
 
     // Ensure Extra_Chance matches Extra_Drops length
@@ -1082,7 +1120,7 @@ app.get('/api/logs', requireStaffAuth, async (req, res) => {
 });
 
 // 10. Dashboard Statistics
-app.get('/api/stats', requireStaffAuth, async (_req, res) => {
+app.get('/api/stats', requireStaffAuth, async (req, res) => {
   let gachaCount = 0;
   let clothesWithFarReach = 0;
   let clothesWithXGems = 0;

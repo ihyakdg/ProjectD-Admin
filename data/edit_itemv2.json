@@ -1,21 +1,24 @@
 {
     "items": [
         {
+            "Block_Chance": -1,
             "Bonus": 0,
-            "Break_Hits": 0,
+            "Break_Hits": 42,
             "Change_Drop_Seeds": 0,
             "Desc": "Edited via Vercel Web Live Synced",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 10,
             "Gems": 50,
             "ID": 9908,
-            "Item_Price": 999999,
+            "Item_Price": 0,
             "Name": "Mythical Infinity Rayman's Fist",
-            "Punch_Hit": 1,
-            "Punch_Id": 80,
+            "Punch_Hit": 0,
+            "Punch_Id": 0,
             "Punch_Place": 10,
-            "Xp": 10,
-            "property_blacklist": true,
+            "Xp": 0,
+            "property_blacklist": false,
             "property_blocked": false,
             "property_farmable": false,
             "property_gacha": false,
@@ -24,10 +27,21 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 1,
-            "Break_Hits": 1,
+            "Break_Hits": 0,
             "Change_Drop_Seeds": 18,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10
+            ],
             "Extra_Drops": [
                 [
                     528,
@@ -76,10 +90,13 @@
             "rarity": 420
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 1,
@@ -99,10 +116,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 15,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "The perfect punch! Ever wanted to send a disembodied fist flying across the land like Rayman? Well, now you can! Land a blow like none other with this furious fist. It even comes with a friend: Globox!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 5,
@@ -122,10 +142,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 10,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 10,
@@ -145,10 +168,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 5,
             "Gems": 10,
@@ -168,10 +194,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This tool is worth more than the stuff you mine with it!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 2,
@@ -191,10 +220,16 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 1,
-            "Break_Hits": 1,
+            "Break_Hits": 0,
             "Change_Drop_Seeds": 30,
             "Desc": "An entire pot filled with gold!!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [
+                10,
+                10
+            ],
             "Extra_Drops": [
                 [
                     2914,
@@ -223,10 +258,13 @@
             "rarity": 666
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "TThis item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 15,
             "Gems": 5,
@@ -246,10 +284,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -269,10 +310,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -292,10 +336,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 10,
             "Gems": 10,
@@ -315,10 +362,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 5,
             "Gems": 5,
@@ -338,10 +388,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "TThis item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 7,
             "Gems": 5,
@@ -361,10 +414,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 6,
             "Gems": 7,
@@ -384,10 +440,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -407,10 +466,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 5,
@@ -430,10 +492,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 5,
@@ -453,10 +518,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 5,
@@ -476,10 +544,16 @@
             "rarity": 999
         },
         {
-            "Bonus": 50,
+            "Block_Chance": -1,
+            "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 1,
+            "Extra_Chance": [
+                10,
+                10
+            ],
             "Extra_Drops": [
                 [
                     1796,
@@ -490,14 +564,14 @@
                     1
                 ]
             ],
-            "Far_Punch": 3,
+            "Far_Punch": 15,
             "Gems": 10,
             "ID": 19220,
             "Item_Price": 0,
             "Name": "`rThe Serpent``",
             "Punch_Hit": 1,
-            "Punch_Id": 347,
-            "Punch_Place": 3,
+            "Punch_Id": 0,
+            "Punch_Place": 15,
             "Xp": 4,
             "property_blacklist": true,
             "property_blocked": false,
@@ -508,10 +582,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Gomen... Amanai!!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -531,10 +608,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 1,
@@ -554,10 +634,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 5,
             "Gems": 5,
@@ -577,10 +660,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 5,
@@ -600,10 +686,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -623,10 +712,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -646,10 +738,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -669,10 +764,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 20,
@@ -692,10 +790,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -715,10 +816,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -738,10 +842,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 1,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 5,
@@ -761,10 +868,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Rip a hole in the fabric of reality with these amazing Waings! Create two unique looks and use a rift in time and space to change between them. Wrench yourself to customise the Wings. This item is available to buy for 2 weekends in December 2021 and is available from a Winterfest system. To avoid refund fraud, this item has been made untradeable until 1st May 2022.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -784,10 +894,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 26,
             "Desc": "Rippling bands of dark energy carry you aloft. Sponsored by Ripply.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -807,10 +920,13 @@
             "rarity": 96
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Better than a Halo, these will actually let you double jump!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -830,10 +946,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 10,
@@ -853,10 +972,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -876,10 +998,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -899,10 +1024,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 15,
@@ -922,10 +1050,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -945,10 +1076,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -968,10 +1102,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -991,10 +1128,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1014,10 +1154,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1037,10 +1180,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 10,
@@ -1060,10 +1206,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 4,
             "Gems": 15,
@@ -1083,10 +1232,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 10,
@@ -1106,10 +1258,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Tired of picking up things with your puny human hands only to put them down later? With the awesome power of MAGNETS, these woes will be a thing of the past! GrowTech inc. proudly presents the MAGPLANT 5000, an all-in-one item-collecting and planting masterpiece. Simply target the machine to the seed or block of your choosing, and it will collect and store any that drop in your world! Only collects items from breaking blocks and harvesting!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1129,10 +1284,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 4,
             "Gems": 20,
@@ -1152,10 +1310,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1175,10 +1336,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1198,10 +1362,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1221,10 +1388,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1244,10 +1414,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1267,10 +1440,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1290,10 +1466,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1313,10 +1492,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1336,10 +1518,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1359,10 +1544,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1382,10 +1570,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1405,10 +1596,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1428,10 +1622,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1451,10 +1648,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1474,10 +1674,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1497,10 +1700,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1520,10 +1726,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1543,10 +1752,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1566,10 +1778,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1589,10 +1804,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1612,10 +1830,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1635,10 +1856,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1658,10 +1882,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1681,10 +1908,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1704,10 +1934,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1727,10 +1960,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1750,10 +1986,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1773,10 +2012,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1796,10 +2038,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1819,10 +2064,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1842,10 +2090,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1865,10 +2116,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1888,10 +2142,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1911,10 +2168,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1934,10 +2194,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1957,10 +2220,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -1980,10 +2246,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2003,10 +2272,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2026,10 +2298,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2049,10 +2324,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2072,10 +2350,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 10,
             "Gems": 10,
@@ -2095,10 +2376,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2118,10 +2402,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2141,10 +2428,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2164,10 +2454,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2187,10 +2480,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2210,10 +2506,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2233,10 +2532,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2256,10 +2558,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2279,10 +2584,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2302,10 +2610,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2325,10 +2636,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 25,
@@ -2348,10 +2662,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2371,10 +2688,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 2,
             "Gems": 1,
@@ -2394,10 +2714,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 5,
             "Gems": 10,
@@ -2417,10 +2740,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2440,10 +2766,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 20,
@@ -2463,10 +2792,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2486,10 +2818,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 5,
             "Gems": 350,
@@ -2509,10 +2844,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 5,
@@ -2532,10 +2870,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2555,10 +2896,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2578,10 +2922,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2601,10 +2948,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2624,10 +2974,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2647,10 +3000,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2670,10 +3026,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2693,10 +3052,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 30,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 2,
             "Gems": 2,
@@ -2716,10 +3078,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2739,10 +3104,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2762,10 +3130,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 10,
@@ -2785,10 +3156,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Coin mantap banget jierr",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2808,10 +3182,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 36,
             "Desc": "Smash through bricks slightly faster!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 0,
@@ -2831,10 +3208,13 @@
             "rarity": 17
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 3,
@@ -2854,10 +3234,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2877,10 +3260,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 7,
             "Gems": 6,
@@ -2900,10 +3286,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 21,
             "Desc": "Show off your guild mascot and let everyone know you're at the top of your game with this peak-shaped flag! Its colors will adapt to the seeds from your guild mascot!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2923,10 +3312,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 40,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "HAKII ONLY",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 70,
@@ -2946,10 +3338,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2969,10 +3364,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Your reward for victory in The Grand Tournament. Put it in the Prize Ladder to win fabulous prizes!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -2992,10 +3390,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 10,
@@ -3015,10 +3416,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This is what happens when you give a prehistoric flower a taste for magic bacon!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3038,10 +3442,18 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 5,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 30,
             "Desc": "These crystals grow naturally in caves. They don't actually glow - bioluminescent organisms feed on them and emit light. Also heat - be careful!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [
+                10,
+                10,
+                10,
+                10
+            ],
             "Extra_Drops": [
                 [
                     1796,
@@ -3078,10 +3490,13 @@
             "rarity": 10
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Takjil token, tukerin lewat /exchange pilih yang event",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3101,10 +3516,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 0,
@@ -3124,10 +3542,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 31,
             "Desc": "Yep, it's dirt.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3147,10 +3568,13 @@
             "rarity": 1
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 33,
             "Desc": "Much like people, palm trees started out short and squat before evolving to be tall and skinny. Unlike palm trees, people then ate Twinkies and watched TV until they were tubby again.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3170,10 +3594,13 @@
             "rarity": 45
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 35,
             "Desc": "These seeds of course grow on a Palm Tree Tree. Which looks nothing like a Palm Tree.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3193,10 +3620,18 @@
             "rarity": 28
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [
+                10,
+                10,
+                10,
+                10
+            ],
             "Extra_Drops": [
                 [
                     242,
@@ -3233,10 +3668,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3256,10 +3694,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3279,10 +3720,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3302,10 +3746,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This mystery item will be only be revealed through the Easter event!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3325,10 +3772,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3348,10 +3798,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 31,
             "Desc": "This contains 100 Small War Balloons. Double-tap this in your inventory to convert it back to 100 Small War Balloons.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3371,10 +3824,13 @@
             "rarity": 31
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Khsus Newbie Tersayang",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 5,
@@ -3394,10 +3850,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Use this on someone to ban them for 10 minutes.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3417,10 +3876,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3440,10 +3902,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 100,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3463,10 +3928,15 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This legendary blade was said to have sliced through 3 tomatoes AND a tin can during the course of a single informercial! Nobody knows if that's really true, but it's certainly a big sword.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [
+                10
+            ],
             "Extra_Drops": [
                 [
                     7188,
@@ -3491,10 +3961,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3514,10 +3987,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3537,10 +4013,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Lights, camera, ANIME ACTION HAIR! Feel the power from root to tip every time you punch!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3560,10 +4039,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3583,10 +4065,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3606,10 +4091,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 25,
@@ -3629,10 +4117,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "You can earn these from Crazy Jim and Sales-Man - try dialing 12345 or 53785 on your Telephone for details! Spend them in the store on special items! If you have 100 Growtokens you can tap them in your inventory to combine them into a Mega Growtoken!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3652,10 +4143,15 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 2,
             "Break_Hits": 1,
             "Change_Drop_Seeds": 30,
             "Desc": "The classiest way to light a room",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [
+                10
+            ],
             "Extra_Drops": [
                 [
                     242,
@@ -3663,7 +4159,7 @@
                 ]
             ],
             "Far_Punch": 0,
-            "Gems": 70,
+            "Gems": 60,
             "ID": 340,
             "Item_Price": 0,
             "Name": "Chandelier",
@@ -3680,10 +4176,13 @@
             "rarity": 87
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Locks an entire world. And looks good doing it. Tap on it in your inventory to break it down into 100 World Locks, if you have room in your inventory.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3703,19 +4202,22 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
-            "Far_Punch": 4,
+            "Far_Punch": 5,
             "Gems": 10,
             "ID": 9774,
             "Item_Price": 0,
             "Name": "Legendary Leonidas Scythe",
             "Punch_Hit": 1,
-            "Punch_Id": 213,
-            "Punch_Place": 4,
+            "Punch_Id": 0,
+            "Punch_Place": 5,
             "Xp": 4,
             "property_blacklist": true,
             "property_blocked": false,
@@ -3726,10 +4228,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3749,10 +4254,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3772,10 +4280,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3795,10 +4306,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3818,10 +4332,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Once used by Cupid himself, this bow shoots hearts! You can yank other players towards you with it.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3841,10 +4358,18 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 25,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [
+                10,
+                10,
+                10,
+                10
+            ],
             "Extra_Drops": [
                 [
                     1796,
@@ -3881,10 +4406,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 26,
             "Desc": "These magical doors connect all the worlds in Growtopia. Place one and then use your Wrench on it to set the destination.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3904,10 +4432,13 @@
             "rarity": 100
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Da Vinci actually thought he could fly with these. He was totally wrong - they only let you double jump and glide.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 20,
@@ -3927,10 +4458,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "ELDRITCH POWER",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3950,10 +4484,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3973,10 +4510,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This amazing horn transforms each time you unequip it. Try all 3 flavors! It also boosts your build range.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -3996,10 +4536,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This is bait for fishing. Equip a fishing rod and then use this bait on water that you are standing next to in order to start fishing. This bait won't catch anything but the Catch of the Day, which changes each day. Fish have a chance to escape, though! Bonus: Fish caught this way can be larger than the normal maximum size!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4019,10 +4562,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4042,10 +4588,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "You keep all your bait for fishing in here. Unfortunately, it's on a timed lock, so it can only be opened every two days.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4065,10 +4614,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 27,
             "Desc": "Moooooo. You can milk a cow once a day or so!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4088,10 +4640,13 @@
             "rarity": 89
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 31,
             "Desc": "BOK BOK BOK! Chickens will lay eggs for you about once a day!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4111,10 +4666,13 @@
             "rarity": 58
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Be careful! This upscale set of porcelain goodness is incredibly delicate. One wrong move, and you'll chip it and let all the tea ghosts out! They are a thing, you know.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4134,10 +4692,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 27,
             "Desc": "These special slow-roasted beans are roasted so slowly that you can only get a cup of coffee once a day!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4157,10 +4718,13 @@
             "rarity": 91
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Baaaaaaa. You can shear a sheep one every few days!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4180,10 +4744,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 28,
             "Desc": "The ideal station for performing SCIENCE! You can collect experimental results about twice a day.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4203,10 +4770,13 @@
             "rarity": 82
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 34,
             "Desc": "Place this jar down and it will suck in a ghost that's above it. You will probably need some friends with Neutron Guns to keep the ghost contained or it will escape! A jar takes 2 seconds to activate, and then only collects spirits for 5 seconds, so time it carefully.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4226,10 +4796,13 @@
             "rarity": 38
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Spooky! This jar contains a ghost! You can throw it to break the jar and unleash the ghost, or instead Drop it gently in front of a Spirit Storage Unit where you can keep the ghost for good.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4249,10 +4822,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Spooky! This jar contains a ghost - a mental one! You can throw it to break the jar and unleash the ghost, or instead drop it gently in front of a Spirit Storage Unit, where you can keep the ghost for good!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4272,10 +4848,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Stand proud and show off your guild mascot with this shield-shaped and panel-patterned flag! Its colors will adapt to the seeds from your guild mascot!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4295,10 +4874,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4318,10 +4900,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4341,10 +4926,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This demonic harvesting machine will mangle trees as it runs them over. If you wear a Fuel pack, it has a 10% chance of harvesting double fruit from each tree below rarity 100! This burns one Fuel Pack.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4364,10 +4952,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Your very own Automated teller machine...machine. This device is not FDIC insured. It does, however, spit out a random number of gems about once a day!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4387,10 +4978,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Your very own Automated teller machine...machine. This device is not FDIC insured. It does, however, spit out a random number of gems about once a day!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4410,10 +5004,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 21,
             "Desc": "This amazing box can store all those pesky untradable items! Only the World Lock owner can use it, and the World Lock can't be traded or destroyed while an Untrade-a-Box is in the world.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4433,10 +5030,13 @@
             "rarity": 249
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "WOW, it's a super pineapple! This is even better than a normal pineapple, you should just keep eating these nonstop!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4456,10 +5056,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 33,
             "Desc": "It's got a vicious streak a mile wide! Share it with your.. friends?",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4479,10 +5082,13 @@
             "rarity": 41
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Become your very own Mini-You! Fool your friends with this amazing optical illusion, now with complete lack of particle emitters! Once again, we reiterate that this is an illusion - Growtech accepts no responsibility for users getting stuck in tight spaces (or inability to use auras convincingly). Get chance good number at roullete",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4502,10 +5108,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 29,
             "Desc": "You just want to watch the world burn. Use this on any tile, whether you own it or not, to set it on fire.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4525,10 +5134,13 @@
             "rarity": 73
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4548,10 +5160,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4571,10 +5186,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "You've been muted more than 100 times might as well have your own duct tape.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4594,10 +5212,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4617,10 +5238,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 26,
             "Desc": "This mystical crystal is not yet in balance. Perhaps if you place it in the bosom of its Earth Mother, and then join it with 4 other crystals, it can achieve harmony.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4640,10 +5264,13 @@
             "rarity": 100
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 26,
             "Desc": "This exotic crystal is not yet in balance. Perhaps if you place it in the bosom of its Earth Mother, and then join it with 4 other crystals, it can achieve harmony.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4663,10 +5290,13 @@
             "rarity": 100
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 26,
             "Desc": "This crystal is not yet in balance. Perhaps if you place it in the bosom of its Earth Mother, and then join it with 4 other crystals, it can achieve harmony.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4686,10 +5316,13 @@
             "rarity": 100
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 26,
             "Desc": "This crystal is not yet in balance. Perhaps if you place it in the bosom of its Earth Mother, and then join it with 4 other crystals, it can achieve harmony.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4709,10 +5342,13 @@
             "rarity": 100
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 26,
             "Desc": "This crystal is not yet in balance. Perhaps if you place it in the bosom of its Earth Mother, and then join it with 4 other crystals, it can achieve harmony.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4732,10 +5368,13 @@
             "rarity": 100
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Rare spectral ichor! You don't get this from just any ghost. I bet it could be turned into something useful... Warning: Is sure to overload any Spirit Storage Unit! Good news, though; The more ghosts you have in the SSU before you add this, the better your odds for something really good!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4755,10 +5394,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This is bait for fishing. Equip a fishing rod and then use this bait on water that you are standing next to in order to start fishing. The dancing action of these lures can even attract large fish.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4778,10 +5420,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This is bait for fishing. Equip a fishing rod and then use this bait on water that you are standing next to in order to start fishing. This bait actually travels through a wormhole into a dark dimension and catches things there, instead of in the water. Lesser bad things.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4801,10 +5446,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This is a bait for fishing. Equip a fishing rod and then use this bait on water that you are standing next to in order to start fishing. This is the only bait that is its own hook! It catches unique seasonal fish that other bait doesn't appeal to.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4824,10 +5472,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Attract frosty fish! Equip a fishing rod and then use this bait in nearby ice water to start fishing. The icy shimmer of this bait will catch unique fish that other lures can't entice!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4847,10 +5498,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This is bait for fishing. Equip a fishing rod and then use this bait on water that you are standing next to in order to start fishing. This bait actually travels through a wormhole into a dark dimension and catches things there, instead of in the water. Bad things.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4870,10 +5524,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This is bait for fishing. Equip a fishing rod and then use this bait on water that you are standing next to in order to start fishing. Wiggly Worms can only catch the smallest fish.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4893,10 +5550,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This Geiger Counter is out of battery power. It will charge up from the static electricity you generate all the time, so just hold it in your hand until it's charged.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4916,10 +5576,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Tap a Geiger Counter in here to charge it up! It's half the speed of hand-charging, but it's convenient. Punch to retrieve it when it's ready.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4939,10 +5602,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "With this handy device, you can detect radiation. As you get closer to the source, the device will ping red, then yellow, then green for the closest. Stand still where you think the source is and you just might find it!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4962,10 +5628,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 27,
             "Desc": "Equip this and then use bait on water next to you to go fishing! All you have to do is wait for a bite, and then punch the fish before it escapes! If you miss, your bait is wasted, so punch fast.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -4985,10 +5654,13 @@
             "rarity": 94
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Equip this and then use bait on water next to you and go fishing! All you have to do is wait for a bait, and then punch the fish before it escapes! If you miss, your bait is wasted, so punch fast. This is a beginner's fishing rod - it keeps fish on the line twice as long as other rods, so it's easy as pie.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5008,10 +5680,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Built to exacting specifications by GrowTech engineers to find and remove temporal anomalies from infected fish! Note: The fragile anomaly-seeking circuitry in these devices is prone to failure and may break (though with less of a chance than a Pristine version, but more than an Exquisite one)! Use with care!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5031,10 +5706,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Equip this and then use bait on water next to you to go fishing! All you have to do is wait for a bite, and then punch the fish before it escapes! If you miss, your bait is wasted, so punch fast. You will suffer mysterious effects when catching fish with this rod. Beware the curse!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5054,10 +5732,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "A rod of such great finery!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5077,10 +5758,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Built to exacting specifications by GrowTech engineers to find and remove temporal anomalies from infected fish, and guaranteed to never break!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5100,10 +5784,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Earn points by catching fish with `2GrowTech's special anomalizing rods`` - the better the rod, the bigger the score! Players can earn points by `2fishing`` with appropriate fishing rods equipped.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5123,10 +5810,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Equip this and then use bait on water next to you to go fishing! All you have to do is wait for a bite, and then punch the fish before it escapes! If you miss, your bait is wasted, so punch fast. This delicious fishing rod gets bites twice as often as other rods.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5146,10 +5836,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Equip this and use bait on water next to you to go fishing! All you have to do is wait for a bite, and then punch the fish before it escapes! If you miss, your bait is wasted, so punch fast. You will suffer mischievous effects when catching fish with this rod!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5169,10 +5862,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "You are burning with furious energy! And double-jump power. Sponsored by Palestinian, Signle, StardusJr.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5192,10 +5888,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Infused with the golden light of romance, this heartstaff has been enhanced beyond its already-impressive start as a weapon of the heart to become a shining example of the power of love! Careful, though - for love can sometimes hit far harder than any edge!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5215,10 +5914,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Infused with the golden light of romance, this heartsword has been enhanced beyond its already-impressive start as a weapon of the heart to become a shining example of the power of love! Careful, though - for love can sometimes cut far deeper than any blade!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5238,10 +5940,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This tool, made to honor Diichaan's service as a moderator, is worth more than the stuff you mine with it!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5261,10 +5966,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 21,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5284,10 +5992,13 @@
             "rarity": 255
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Show everyone you abide by the Code of Chivalry while keeping the sun - and any pesky arrows - out of your eyes at the same time! Now in glorious golden plate!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5307,10 +6018,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5330,10 +6044,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "The finest silk was once weaved for a great goddess but now it adorns your shoulders. Imbued with goddess' power, this scarf will lift you through the air and make your feet glide lightly wherever they fall.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5353,10 +6070,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "A swirling galaxy engulfs you, pulling everything you touch towards you (well only growtopians!).",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5376,10 +6096,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "The Growtopian Eye has evolved to see more of the light spectrum than some creatures, which allows them to see this beautiful Ultraviolet Aura. Warning: Ultraviolet Radiation is the what causes sunburn. Prolonged exposure is not advised and don't forget to wear your hat and sunscreen.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5399,10 +6122,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5422,10 +6148,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "You don't jump higher than with Devil Wings, but man, you do look pretty scary. Sponsored by Cukuzz, Heme, and Seabreaze.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5445,10 +6174,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This scythe contains the fury of the heavens! Sponsored by Edvoid20, iKrideez and Anfinity",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5468,10 +6200,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Practically glowing with the eye-popping colors of a perfect sunset, this once-cloudy cape has been transformed into a stunning piece of radiant cloth! Don this beauty, and everyone will treat you like a sky set ablaze with all of the majesty of a setting sun - they won't be able to look away!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5491,10 +6226,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "You bear the wings of a true savior, a surgeon without peer who has saved countless lives in their pursuit of the greater good. All who can hear the beat of these magnificently medicinal wings will know that their salvation has arrived.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5514,10 +6252,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Incredible forces of immortality and history have been combined with the building blocks of creation to forge this orb. Equip it and mastery of the fourth dimension will be yours...",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5537,10 +6278,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Unrelenting luck and luxury have been combined with the building blocks of creation to forge this lens. Equip it and unstoppable fortune will be yours... but do be careful. Power tends to corrupt, after all.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5560,10 +6304,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Incredible forces of willpower and mental strength have been combined with the building blocks of creation to forge this totem. Equip it and ancient knowledge will be yours...",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5583,10 +6330,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Astonishing whirls of space and time have been combined with the building blocks of creation to forge this tesseract. Equip it and watch your hoard grow..",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5606,10 +6356,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Fantastic powers of verdant night have been combined with the building blocks of creation to forge this seed. Equip it and the bloom of life will bend to your will...",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5629,10 +6382,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "A superbly spooky lock that not only locks an entire world, but also attracts other ghosts to join the party!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5652,10 +6408,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Locks an entire world - and looks dazzling while it does it! Tap on it in your inventory to break it down into 100 Diamond Locks (if you have room in your inventory).",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5675,10 +6434,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Drink this fizzy potion to gain 10,000 XP instantly! Only works on yourself, no pouring it down other peoples' throats.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5698,10 +6460,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Turns out you had to do a lot more than ring a bell to get these suckers.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5721,10 +6486,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "It's a box filled with summer excitement! Smash it with your friends.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5744,10 +6512,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "An artifact from the past dug up in the sand. Smash it for a change of ancient Phoenix items from the past! Phoenix items will only be available to claim from this item during SummerFest.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5767,10 +6538,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Smash it for Summerfest goodies! Has increased chances of getting super valuable rewards.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5790,10 +6564,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Once used by Cupid himself, this bow shoots golden hearts! You can yank other players toward you with it. Plus it's shiny!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5813,10 +6590,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "All the secrets of the perfect date have been fused with the sparkling strength of a golden heart to create this nexus of affection! Be the quickest to anyone's heart when you don this delightful locket!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5836,10 +6616,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Embarassed? Feel like hiding your face? How about just removing it instead?",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5859,10 +6642,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5882,10 +6668,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Got a big pile of junk and don't want to waste time sorting through it? Have no fear; Extract-O-Snap is here! This handy hook will scan any stacks you target and then extract your desired item in a snap!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5905,10 +6694,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This legendary battle armor was the turning point in the war of the Growtopia Valley.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5928,10 +6720,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Huggy Wuggy.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5951,10 +6746,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Wings to make your tummy rumble! These deep fried wings are literally straight from the oven! Covered in a golden breadcrumb made with a secret mix of Growtopia herbs and spices, cooked to create the perfect balance between flavor and aerodynamics!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5974,10 +6772,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 21,
             "Desc": "This wizard is legendary! Punch or wrench him to obtain Legendary Quests.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -5997,10 +6798,13 @@
             "rarity": 200
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Even as tiny as they are, these wings will allow you to jump in mid-air!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6020,10 +6824,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "If you find yourself lost in a world without any Toilet Seeds, you'll be glad you have this. Plus it's shiny!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6043,10 +6850,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "These sporty shoes are coated with a layer of pure sparkling gold. Sponsored by Kubeti and Rooted.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6066,10 +6876,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Access to the wonders of the Spring Season! Collect these to unlock its many rewards!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6089,10 +6902,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 33,
             "Desc": "Fish can swim around in here! However, you need to put them in through a Fish Tank Port, sold separately.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6112,10 +6928,13 @@
             "rarity": 42
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6135,10 +6954,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6158,10 +6980,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This shovel is very specifically designed for one purpose: to shovel dirt. It is pretty useless at digging anywhere else, but dang if it doesn't rip dirt apart (and Cave Background).",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 4,
             "Gems": 0,
@@ -6181,10 +7006,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 10,
@@ -6204,10 +7032,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "If you own two worlds, you can use this handy form to swap their names permanently. See a new name you want that nobody wants? Lock it up, and do a name swap! Requires a World Lock in both worlds.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6227,10 +7058,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6250,10 +7084,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6273,10 +7110,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Forget using your puny human muscles to swing this hammer! it's so big and bashy, it uses ROCKET POWER to crack the skies and shatter the earth! Look out!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 3,
             "Gems": 10,
@@ -6296,10 +7136,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "A shot straight to the heart.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 1,
@@ -6319,10 +7162,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Empowered by bountiful spirits from the Other Side, this delicate dreamcatcher will grant its wielder clear skies... and 2% chance of getting extra blocks from harvesting trees!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 1,
             "Gems": 0,
@@ -6342,10 +7188,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 31,
             "Desc": "Yep, it's heavenly space dirt.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6365,10 +7214,13 @@
             "rarity": 1
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "No info.sss",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6388,10 +7240,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "No info.kkk",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6411,10 +7266,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 37,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6434,10 +7292,13 @@
             "rarity": 11
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6457,10 +7318,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6480,10 +7344,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "No info.ks",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6503,10 +7370,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6526,10 +7396,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6549,10 +7422,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6572,10 +7448,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 5,
             "Gems": 20,
@@ -6595,10 +7474,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 37,
             "Desc": "This item has no description. WALAH CIK",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 5,
             "Gems": 600,
@@ -6618,10 +7500,13 @@
             "rarity": 11
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
-            "Break_Hits": 1,
+            "Break_Hits": 0,
             "Change_Drop_Seeds": 37,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6641,10 +7526,13 @@
             "rarity": 11
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6664,10 +7552,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 37,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6687,10 +7578,13 @@
             "rarity": 11
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6710,10 +7604,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 60,
@@ -6733,10 +7630,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Point the way to victory for your guild with this arrow-shaped flag! Its colors will adapt to the seeds from your guild mascot!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6756,10 +7656,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6779,10 +7682,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Show off your guild colors with this honorable - and ornate - banner. Banner colors will adapt to the seeds from your guild mascot!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6802,10 +7708,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 37,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6825,10 +7734,13 @@
             "rarity": 11
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6848,10 +7760,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6871,33 +7786,13 @@
             "rarity": 999
         },
         {
-            "Bonus": 1,
-            "Break_Hits": 0,
-            "Change_Drop_Seeds": 0,
-            "Desc": "This item has no description.",
-            "Extra_Drops": [],
-            "Far_Punch": 0,
-            "Gems": 0,
-            "ID": 21364,
-            "Item_Price": 0,
-            "Name": "`bMythical Legendary Box ",
-            "Punch_Hit": 0,
-            "Punch_Id": 0,
-            "Punch_Place": 0,
-            "Xp": 0,
-            "property_blacklist": true,
-            "property_blocked": false,
-            "property_farmable": false,
-            "property_gacha": true,
-            "property_unobtainable": false,
-            "property_untradeable": false,
-            "rarity": 999
-        },
-        {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6917,10 +7812,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Stand proud and show off your guild mascot with this shield-shaped and striped-patterned flag! Its colors will adapt to the seeds from your guild mascot!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 6,
             "Gems": 5,
@@ -6940,10 +7838,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 20,
-            "Break_Hits": 1,
+            "Break_Hits": 0,
             "Change_Drop_Seeds": 37,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 10,
             "Gems": 100,
@@ -6963,10 +7864,13 @@
             "rarity": 11
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -6986,10 +7890,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 1,
-            "Break_Hits": 1,
+            "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -7009,10 +7916,13 @@
             "rarity": 420
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -7032,33 +7942,39 @@
             "rarity": 999
         },
         {
-            "Bonus": 50,
-            "Break_Hits": 1,
-            "Change_Drop_Seeds": 15,
-            "Desc": "This item has no description.",
-            "Extra_Drops": [],
-            "Far_Punch": 3,
-            "Gems": 60,
             "ID": 10384,
-            "Item_Price": 0,
             "Name": "`rThe Serpent``",
-            "Punch_Hit": 1,
-            "Punch_Id": 347,
-            "Punch_Place": 3,
+            "Desc": "This item has no description.",
+            "rarity": 999,
+            "Break_Hits": 0,
+            "Far_Punch": 15,
+            "Punch_Place": 15,
+            "Punch_Hit": 0,
+            "Punch_Id": 0,
+            "Gems": 14,
             "Xp": 10,
-            "property_blacklist": true,
-            "property_blocked": false,
-            "property_farmable": false,
+            "Bonus": 0,
+            "Item_Price": 0,
+            "Change_Drop_Seeds": 15,
+            "Block_Chance": -1,
+            "ExtraDropsMode": 0,
+            "Extra_Drops": [],
+            "Extra_Chance": [],
             "property_gacha": false,
-            "property_unobtainable": true,
+            "property_farmable": false,
             "property_untradeable": true,
-            "rarity": 999
+            "property_blacklist": false,
+            "property_blocked": false,
+            "property_unobtainable": false
         },
         {
+            "Block_Chance": -1,
             "Bonus": 100,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 37,
             "Desc": "Careful with these, they'll stain! Throw it at a player to turn him blue for an hour.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 900,
@@ -7078,36 +7994,39 @@
             "rarity": 12
         },
         {
-            "ID": 9902,
-            "Name": "Legendary Mystery Box",
-            "Desc": "This item has no description.",
-            "rarity": 999,
-            "Break_Hits": 4,
-            "Far_Punch": 0,
-            "Punch_Place": 0,
-            "Punch_Hit": 4,
-            "Punch_Id": 0,
-            "Gems": 0,
-            "Xp": 8,
-            "Bonus": 0,
-            "Item_Price": 0,
-            "Change_Drop_Seeds": 0,
             "Block_Chance": -1,
+            "Bonus": 0,
+            "Break_Hits": 5,
+            "Change_Drop_Seeds": 0,
+            "Desc": "This item has no description.",
             "ExtraDropsMode": 0,
-            "Extra_Drops": [],
             "Extra_Chance": [],
-            "property_gacha": true,
-            "property_farmable": false,
-            "property_untradeable": false,
+            "Extra_Drops": [],
+            "Far_Punch": 0,
+            "Gems": 0,
+            "ID": 9902,
+            "Item_Price": 0,
+            "Name": "Legendary Mystery Box",
+            "Punch_Hit": 0,
+            "Punch_Id": 0,
+            "Punch_Place": 0,
+            "Xp": 0,
             "property_blacklist": true,
             "property_blocked": false,
-            "property_unobtainable": false
+            "property_farmable": false,
+            "property_gacha": false,
+            "property_unobtainable": false,
+            "property_untradeable": false,
+            "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 15,
             "Gems": 50,
@@ -7127,10 +8046,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "It's 1.21 gigawatts in the palm of your hands! Sponsored by Hercule, Dodoman11 and RTsoft Forumers.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -7150,10 +8072,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 0,
             "Desc": "Smash the limits with this intensely powerful weapon! Oversized might for oversized heroics, this weapon swirls with spirit energy - a devastating weapon in the right hands, and a gorgeous conversation piece in just about any!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -7173,10 +8098,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 21,
             "Desc": "This item has no description.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -7196,10 +8124,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 21,
             "Desc": "Smash it for Valentine's goodies!",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -7219,10 +8150,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 0,
             "Change_Drop_Seeds": 21,
             "Desc": "Players that touch this get a Legendary Orb.",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 0,
@@ -7242,10 +8176,13 @@
             "rarity": 999
         },
         {
+            "Block_Chance": -1,
             "Bonus": 0,
             "Break_Hits": 1,
-            "Change_Drop_Seeds": 0,
+            "Change_Drop_Seeds": 60,
             "Desc": "",
+            "ExtraDropsMode": 0,
+            "Extra_Chance": [],
             "Extra_Drops": [],
             "Far_Punch": 0,
             "Gems": 100,
@@ -7258,7 +8195,7 @@
             "Xp": 25,
             "property_blacklist": false,
             "property_blocked": false,
-            "property_farmable": false,
+            "property_farmable": true,
             "property_gacha": false,
             "property_unobtainable": false,
             "property_untradeable": false,

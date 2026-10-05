@@ -1,5 +1,1249 @@
 [
   {
+    "id": "474804d687763052",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 15, FarPut: 15, Hit: 0, xGems: 14, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791149210531
+  },
+  {
+    "id": "3a2105a0c5d10bde",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 15, FarPut: 15, Hit: 0, xGems: 14, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791149210274
+  },
+  {
+    "id": "b7e8fa6798a2e2db",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #19220 (`rThe Serpent``) [BreakHits: 0, FarPunch: 15, FarPut: 15, Hit: 1, xGems: 10, xXP: 4]",
+    "extra": {},
+    "timestamp": 1791149190558
+  },
+  {
+    "id": "8cf66a39879a425a",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #19220 (`rThe Serpent``) [BreakHits: 0, FarPunch: 15, FarPut: 15, Hit: 1, xGems: 10, xXP: 4]",
+    "extra": {
+      "itemId": 19220
+    },
+    "timestamp": 1791149190287
+  },
+  {
+    "id": "3cd807c1a1465af5",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 6, FarPut: 6, Hit: 0, xGems: 14, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791136613874
+  },
+  {
+    "id": "90e8b76beede13a9",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 6, FarPut: 6, Hit: 0, xGems: 14, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791136613603
+  },
+  {
+    "id": "5b89b2a5283353a9",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 20, FarPut: 20, Hit: 0, xGems: 14, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791136168970
+  },
+  {
+    "id": "72c59eb689563c20",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 20, FarPut: 20, Hit: 0, xGems: 14, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791136168705
+  },
+  {
+    "id": "e5e93b69e1a5c8e1",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9774 (Legendary Leonidas Scythe) [BreakHits: 0, FarPunch: 5, FarPut: 5, Hit: 1, xGems: 10, xXP: 4]",
+    "extra": {},
+    "timestamp": 1791136139684
+  },
+  {
+    "id": "ed57af2018aa8aa2",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9774 (Legendary Leonidas Scythe) [BreakHits: 0, FarPunch: 5, FarPut: 5, Hit: 1, xGems: 10, xXP: 4]",
+    "extra": {
+      "itemId": 9774
+    },
+    "timestamp": 1791136139421
+  },
+  {
+    "id": "32ef89058d6fd166",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9774 (Legendary Leonidas Scythe) [BreakHits: 0, FarPunch: 15, FarPut: 15, Hit: 1, xGems: 10, xXP: 4]",
+    "extra": {},
+    "timestamp": 1791136073475
+  },
+  {
+    "id": "603bdc853446b431",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9774 (Legendary Leonidas Scythe) [BreakHits: 0, FarPunch: 15, FarPut: 15, Hit: 1, xGems: 10, xXP: 4]",
+    "extra": {
+      "itemId": 9774
+    },
+    "timestamp": 1791136073202
+  },
+  {
+    "id": "697bb2f0dc5588d0",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "RESET_ITEM",
+    "details": "Reset item #21364 (`bMythical Legendary Box ) ke pengaturan bawaan server",
+    "extra": {},
+    "timestamp": 1791135967663
+  },
+  {
+    "id": "090d9fe8feff622b",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "RESET_ITEM",
+    "details": "Reset item #21364 (`bMythical Legendary Box ) ke pengaturan bawaan server",
+    "extra": {
+      "itemId": 21364
+    },
+    "timestamp": 1791135967393
+  },
+  {
+    "id": "8fa4d822b5d31e15",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SET_GACHA",
+    "details": "Set Block #21364 (`bMythical Legendary Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {},
+    "timestamp": 1791135857728
+  },
+  {
+    "id": "1d671fbd94be1fa2",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Set Block #21364 (`bMythical Legendary Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {
+      "itemId": 21364
+    },
+    "timestamp": 1791135857457
+  },
+  {
+    "id": "2b8390b4822fa5e1",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9902 (Legendary Mystery Box) [BreakHits: 5, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {},
+    "timestamp": 1791135734384
+  },
+  {
+    "id": "2b10a0e8e453c0e3",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9902 (Legendary Mystery Box) [BreakHits: 5, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {
+      "itemId": 9902
+    },
+    "timestamp": 1791135734116
+  },
+  {
+    "id": "c1935aaac249c0a4",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SET_GACHA",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {},
+    "timestamp": 1791135586728
+  },
+  {
+    "id": "443272978691f1a3",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {
+      "itemId": 9902
+    },
+    "timestamp": 1791135586458
+  },
+  {
+    "id": "6ec4d4350601feec",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 1, FarPunch: 15, FarPut: 15, Hit: 0, xGems: 60, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791120528962
+  },
+  {
+    "id": "a247b3f60926760c",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 1, FarPunch: 15, FarPut: 15, Hit: 0, xGems: 60, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791120528695
+  },
+  {
+    "id": "4e56764566d0fef7",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 1, FarPunch: 20, FarPut: 20, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791120503454
+  },
+  {
+    "id": "fd941c49b80da81d",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 1, FarPunch: 20, FarPut: 20, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791120503192
+  },
+  {
+    "id": "b9b48d9fc9537b9a",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1791117651894
+  },
+  {
+    "id": "729d739863917449",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791115195219
+  },
+  {
+    "id": "70ab943c72a57b3e",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791115194891
+  },
+  {
+    "id": "a6b436051b4650b4",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791114910838
+  },
+  {
+    "id": "8d4dd68dc635bb9e",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791114910559
+  },
+  {
+    "id": "84d7af438421ee29",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791114693399
+  },
+  {
+    "id": "297039ecefbd1912",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791114693126
+  },
+  {
+    "id": "d9eada4235961fcb",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 6, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791114306489
+  },
+  {
+    "id": "7beff9eb63160773",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 6, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791114306200
+  },
+  {
+    "id": "1c4d11ea4523ec76",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 3, FarPut: 3, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791114037026
+  },
+  {
+    "id": "5adfa60ee47bdacc",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 3, FarPut: 3, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791114036754
+  },
+  {
+    "id": "7ef7537ef9b85d9c",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 20, FarPut: 20, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791113988976
+  },
+  {
+    "id": "df3eb62b89146b59",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [BreakHits: 0, FarPunch: 20, FarPut: 20, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791113988701
+  },
+  {
+    "id": "df510edabba19e0b",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SET_GACHA",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {},
+    "timestamp": 1791113956094
+  },
+  {
+    "id": "0ce4e07eb894adfe",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {
+      "itemId": 9902
+    },
+    "timestamp": 1791113955819
+  },
+  {
+    "id": "c9da737b37d94179",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 60, xXP: 1]",
+    "extra": {},
+    "timestamp": 1791113737131
+  },
+  {
+    "id": "9894b75454da8025",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [BreakHits: 0, FarPunch: 0, FarPut: 0, Hit: 0, xGems: 60, xXP: 1]",
+    "extra": {
+      "itemId": 340
+    },
+    "timestamp": 1791113736862
+  },
+  {
+    "id": "43422ad5d02430e8",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SET_GACHA",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {},
+    "timestamp": 1791113669198
+  },
+  {
+    "id": "96848050bdb8ccdc",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {
+      "itemId": 9902
+    },
+    "timestamp": 1791113668918
+  },
+  {
+    "id": "e477be26b3cbe49e",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SET_GACHA",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {},
+    "timestamp": 1791113387983
+  },
+  {
+    "id": "b85dddb4f2dd1486",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Set Block #9902 (Legendary Mystery Box) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {
+      "itemId": 9902
+    },
+    "timestamp": 1791113387713
+  },
+  {
+    "id": "b92e27d34a83a194",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1791083443385
+  },
+  {
+    "id": "b9c4f41204da78dd",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1791083294061
+  },
+  {
+    "id": "ab0ef2176076071e",
+    "growId": "BintangAlvarendra",
+    "role": "Config Access",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1791083284126
+  },
+  {
+    "id": "eab827365559ff11",
+    "growId": "SFRMA",
+    "role": "Moderator",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1791083177009
+  },
+  {
+    "id": "39dc7cbd9a17b646",
+    "growId": "virly",
+    "role": "Moderator",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1791082872116
+  },
+  {
+    "id": "e14a909383141baf",
+    "growId": "virly",
+    "role": "Moderator",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "timestamp": 1791082616313
+  },
+  {
+    "id": "c0b7ccb553ea6812",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 70, xXP: 1]",
+    "extra": {},
+    "timestamp": 1791065218262
+  },
+  {
+    "id": "e4eba3667f121b5a",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 70, xXP: 1]",
+    "extra": {
+      "itemId": 340
+    },
+    "timestamp": 1791065217988
+  },
+  {
+    "id": "1e2fe6d3b14e9b1c",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 70, xXP: 1]",
+    "extra": {},
+    "timestamp": 1791065190018
+  },
+  {
+    "id": "2f261ff27b35d876",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 70, xXP: 1]",
+    "extra": {
+      "itemId": 340
+    },
+    "timestamp": 1791065189756
+  },
+  {
+    "id": "919b1227ab8819d1",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 80, xXP: 1]",
+    "extra": {},
+    "timestamp": 1791065078637
+  },
+  {
+    "id": "46f74a3e76080683",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #340 (Chandelier) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 80, xXP: 1]",
+    "extra": {
+      "itemId": 340
+    },
+    "timestamp": 1791065078380
+  },
+  {
+    "id": "92c3ca6ac741dc76",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 1, xGems: 0, xXP: 0]",
+    "extra": {},
+    "timestamp": 1791055241720
+  },
+  {
+    "id": "894293b5d77625bf",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 1, xGems: 0, xXP: 0]",
+    "extra": {
+      "itemId": 21704
+    },
+    "timestamp": 1791055241453
+  },
+  {
+    "id": "be0cf217f437463d",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 20, FarPut: 20, Hit: 1, xGems: 30, xXP: 0]",
+    "extra": {},
+    "timestamp": 1791055201307
+  },
+  {
+    "id": "b38c8a9ca44a7de9",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 20, FarPut: 20, Hit: 1, xGems: 30, xXP: 0]",
+    "extra": {
+      "itemId": 21704
+    },
+    "timestamp": 1791055201044
+  },
+  {
+    "id": "a2308fb1eca15327",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791055091166
+  },
+  {
+    "id": "b29a733483d39eb0",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791055090910
+  },
+  {
+    "id": "1eb066c8c46e3aed",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791054910579
+  },
+  {
+    "id": "764d72067c81528c",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054910302
+  },
+  {
+    "id": "6582319c6856631d",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791054733339
+  },
+  {
+    "id": "3c5ee5eb63ca403d",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054733071
+  },
+  {
+    "id": "04e841843ae7b911",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791054488559
+  },
+  {
+    "id": "16d54abb51e3d80a",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 10]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054488293
+  },
+  {
+    "id": "0b955b17d4d4f1a2",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791054415085
+  },
+  {
+    "id": "445dc3b31158c1f8",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 10]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054414820
+  },
+  {
+    "id": "66183ae15026d799",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791054367018
+  },
+  {
+    "id": "101849cc75c71e45",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 10]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054366748
+  },
+  {
+    "id": "bfce71f9a09d5415",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791054352104
+  },
+  {
+    "id": "9d40222ab21f787b",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054351841
+  },
+  {
+    "id": "cce15a810b6871d5",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791054326209
+  },
+  {
+    "id": "3114b4e9d7d4544f",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054325947
+  },
+  {
+    "id": "ec7f27c589806ead",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791054238607
+  },
+  {
+    "id": "f244b06610ed9f58",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054238341
+  },
+  {
+    "id": "c43fb145fef94597",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 8, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791054138037
+  },
+  {
+    "id": "79b164e368cb0ea3",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 8, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791054137774
+  },
+  {
+    "id": "a184774404e96a87",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791053840235
+  },
+  {
+    "id": "0945767c8c25d8f7",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791053839968
+  },
+  {
+    "id": "0a21376dff774932",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 5, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791053772217
+  },
+  {
+    "id": "0f4368b1420da4d4",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 5, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791053771947
+  },
+  {
+    "id": "09df85673bcddce7",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9928 (Pot O' Gems) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 1]",
+    "extra": {},
+    "timestamp": 1791052163115
+  },
+  {
+    "id": "0e15e93da06edf43",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9928 (Pot O' Gems) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 1]",
+    "extra": {
+      "itemId": 9928
+    },
+    "timestamp": 1791052162848
+  },
+  {
+    "id": "93053704d9e9dbc9",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9928 (Pot O' Gems) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 1]",
+    "extra": {},
+    "timestamp": 1791052126574
+  },
+  {
+    "id": "6d551fe4005d0c88",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9928 (Pot O' Gems) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 1]",
+    "extra": {
+      "itemId": 9928
+    },
+    "timestamp": 1791052126307
+  },
+  {
+    "id": "247d193452ead82e",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9928 (Pot O' Gems) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 1]",
+    "extra": {},
+    "timestamp": 1791052081460
+  },
+  {
+    "id": "897d11dd6035ed64",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #9928 (Pot O' Gems) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 100, xXP: 1]",
+    "extra": {
+      "itemId": 9928
+    },
+    "timestamp": 1791052081193
+  },
+  {
+    "id": "8353aef11fe8ec6a",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [FarPunch: 15, FarPut: 15, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791046747032
+  },
+  {
+    "id": "4722e489a267f387",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [FarPunch: 15, FarPut: 15, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791046746765
+  },
+  {
+    "id": "99e7ee27190394f6",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SET_GACHA",
+    "details": "Set Block #10942 (`#Super Mythical Block) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {},
+    "timestamp": 1791046539570
+  },
+  {
+    "id": "1f62245e43cc3cee",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Set Block #10942 (`#Super Mythical Block) menjadi GACHA dengan 0 hadiah drop",
+    "extra": {
+      "itemId": 10942
+    },
+    "timestamp": 1791046539306
+  },
+  {
+    "id": "fa8b6bed48698490",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [FarPunch: 14, FarPut: 15, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791046368231
+  },
+  {
+    "id": "f8e5d625662e8cd5",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [FarPunch: 14, FarPut: 15, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791046367966
+  },
+  {
+    "id": "08c143254a88243c",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [FarPunch: 15, FarPut: 15, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {},
+    "timestamp": 1791046300032
+  },
+  {
+    "id": "1cc2db3f295a75f3",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #10384 (`rThe Serpent``) [FarPunch: 15, FarPut: 15, Hit: 1, xGems: 60, xXP: 10]",
+    "extra": {
+      "itemId": 10384
+    },
+    "timestamp": 1791046299776
+  },
+  {
+    "id": "052cd1b583d39063",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #20014 (`sMythical The Serpent) [FarPunch: 10, FarPut: 10, Hit: 1, xGems: 100, xXP: 50]",
+    "extra": {},
+    "timestamp": 1791045906185
+  },
+  {
+    "id": "edc091969178b767",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #20014 (`sMythical The Serpent) [FarPunch: 10, FarPut: 10, Hit: 1, xGems: 100, xXP: 50]",
+    "extra": {
+      "itemId": 20014
+    },
+    "timestamp": 1791045905917
+  },
+  {
+    "id": "e07004a2016b194b",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {},
+    "timestamp": 1791045758934
+  },
+  {
+    "id": "954a8b0068f6488d",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {
+      "itemId": 21704
+    },
+    "timestamp": 1791045758674
+  },
+  {
+    "id": "baf4b739cfed64bb",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {},
+    "timestamp": 1791045675155
+  },
+  {
+    "id": "a7a3ce5eb65542d8",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {
+      "itemId": 21704
+    },
+    "timestamp": 1791045674888
+  },
+  {
+    "id": "5f4f9029746f3f40",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {},
+    "timestamp": 1791045662830
+  },
+  {
+    "id": "9618203f22ca0930",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21704 (`cLegendary Snow Katana) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {
+      "itemId": 21704
+    },
+    "timestamp": 1791045662566
+  },
+  {
+    "id": "18ced596657f2bce",
+    "growId": "Xiruni",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1791042916574
+  },
+  {
+    "id": "1c4e8b9886af35d3",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791042875931
+  },
+  {
+    "id": "289afa9a62297ff4",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791042875674
+  },
+  {
+    "id": "b85d660d9fc4f58f",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791042744343
+  },
+  {
+    "id": "4b2179a5c8bfa4b1",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791042744087
+  },
+  {
+    "id": "8e2b21800e4e96c4",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791042637902
+  },
+  {
+    "id": "621793f184c5e1d1",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791042637638
+  },
+  {
+    "id": "f7b5459b621056e0",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 5, xGems: 90, xXP: 25]",
+    "extra": {},
+    "timestamp": 1791041950584
+  },
+  {
+    "id": "ae16c85f0c04b40c",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #21078 (`9Legendary Pot O' Gems``) [FarPunch: 0, FarPut: 0, Hit: 5, xGems: 90, xXP: 25]",
+    "extra": {
+      "itemId": 21078
+    },
+    "timestamp": 1791041950320
+  },
+  {
+    "id": "14dd44d809d78a08",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #542 (Pot O' Gold) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {},
+    "timestamp": 1791041743307
+  },
+  {
+    "id": "00a9fbe3a1ae15ea",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #542 (Pot O' Gold) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 0, xXP: 0]",
+    "extra": {
+      "itemId": 542
+    },
+    "timestamp": 1791041743042
+  },
+  {
+    "id": "0bc37de8608a9f8e",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #542 (Pot O' Gold) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 26]",
+    "extra": {},
+    "timestamp": 1791041423470
+  },
+  {
+    "id": "0ec0ee78769b0334",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #542 (Pot O' Gold) [FarPunch: 0, FarPut: 0, Hit: 0, xGems: 90, xXP: 26]",
+    "extra": {
+      "itemId": 542
+    },
+    "timestamp": 1791041423211
+  },
+  {
+    "id": "2769625e45310587",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #542 (Pot O' Gold) [FarPunch: 0, FarPut: 0, Hit: 6, xGems: 90, xXP: 26]",
+    "extra": {},
+    "timestamp": 1791041114616
+  },
+  {
+    "id": "fa6809bb9da6231f",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "SAVE_ITEM",
+    "details": "Update item #542 (Pot O' Gold) [FarPunch: 0, FarPut: 0, Hit: 6, xGems: 90, xXP: 26]",
+    "extra": {
+      "itemId": 542
+    },
+    "timestamp": 1791041114351
+  },
+  {
+    "id": "2eec1149ed8e888f",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1791040717879
+  },
+  {
+    "id": "a17851b5784d7f3f",
+    "growId": "SecretXz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1791036125175
+  },
+  {
+    "id": "37a17ed7d52126ca",
+    "growId": "SecretXzz",
+    "role": "Owner max",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1790961375225
+  },
+  {
+    "id": "2ce864973cd94ef8",
+    "growId": "ZyrooGTPS",
+    "role": "Staff",
+    "action": "STAFF_LOGIN",
+    "details": "Berhasil login ke Web Admin Editor",
+    "extra": {},
+    "timestamp": 1790961354704
+  },
+  {
     "id": "73da200423df0b1a",
     "growId": "SecretXzz",
     "role": "Owner max",
